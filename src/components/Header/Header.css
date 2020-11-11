@@ -2,9 +2,13 @@
   box-sizing: border-box;
   min-height: 56px;
   border-bottom: 1px solid rgba(196,196,196,0.01);
-  position: relative;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left:0;
   display: flex;
   background: url(../../images/form-img.jpg) no-repeat center/cover fixed;
+  z-index: 30;
 }
 
 .header__container {

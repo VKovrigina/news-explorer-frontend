@@ -1,0 +1,8 @@
+.search-form {
+  margin-top: 56px;
+  box-sizing: border-box;
+  min-height: 480px;
+  position: relative;
+  display: flex;
+  background: url(../../images/form-img.jpg) no-repeat center/cover fixed;
+}
