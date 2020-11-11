@@ -3,7 +3,11 @@ import './Header.css';
 
 function Header() {
   return (
-    <p>Header</p>
+    <header className="header">
+      <img className="header__logo" alt="" />
+      <p>Header</p>
+    </header>
+
   );
 }
 
