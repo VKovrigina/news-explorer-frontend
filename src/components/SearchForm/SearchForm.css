@@ -1,3 +1,18 @@
+@font-face {
+  font-family: 'Robotoslab-regular';
+  src: url(../../vendor/fonts/robotoslab-regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto-regular';
+  src: url(../../vendor/fonts/roboto-regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto-medium';
+  src: url(../../vendor/fonts/roboto-medium.woff) format('woff');
+}
+
 .search-form {
   margin-top: 56px;
   box-sizing: border-box;
@@ -5,4 +20,97 @@
   position: relative;
   display: flex;
   background: url(../../images/form-img.jpg) no-repeat center/cover fixed;
+  display: flex;
+}
+
+.search-form__container {
+  box-sizing: border-box;
+  margin: auto;
+  min-height: 416px;
+  width: calc(100% - 32px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.search-form__title {
+  color: rgb(255, 255, 255);
+  font-family: 'Robotoslab-regular', serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 40px;
+  letter-spacing: 0px;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+.search-form__description {
+  color: rgb(255, 255, 255);
+  font-family: 'Roboto-regular', 'Arial', 'Helvetica', sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+  padding: 0;
+  margin: 16px 0 16px;
+}
+
+.search-form__input {
+  box-sizing: border-box;
+  padding: 0 16px 0;
+  margin: 0 0 16px;
+  background: rgb(255, 255, 255);
+  min-height: 56px;
+  width: 100%;
+  max-width: 460px;
+  border-radius: 100px;
+  border: none;
+  font-family: 'Roboto-regular', 'Arial', 'Helvetica', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+.search-form__input::placeholder {
+  color: rgba(182, 188, 191, 1);
+}
+
+.search-form__submit-button {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  min-width: 164px;
+  background: rgba(47, 113, 229, 1);
+  min-height: 56px;
+  border-radius: 100px;
+  border: none;
+  font-family: 'Roboto-medium', 'Arial', 'Helvetica', sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+
+.search-form__submit-button:hover {
+  background: rgba(52, 126, 255, 1);
+}
+
+.search-form__submit-button:active {
+  background: rgba(42, 101, 204, 1);
+}
+
+.search-form__submit-button:visited {
+  background: rgba(47, 113, 229, 1);
 }
