@@ -1,7 +1,7 @@
 .header {
   box-sizing: border-box;
   min-height: 56px;
-  border-bottom: 1px solid rgba(196,196,196,0.01);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   position: fixed;
   width: 100%;
   top: 0;
