@@ -1,5 +1,5 @@
 @font-face {
-  font-family: 'Robotoslab-regular';
+  font-family: 'Roboto-slab-regular';
   src: url(../../vendor/fonts/robotoslab-regular.woff) format('woff');
 }
 
@@ -46,7 +46,7 @@
 
 .search-form__title {
   color: rgb(255, 255, 255);
-  font-family: 'Robotoslab-regular', serif;
+  font-family: 'Roboto-slab-regular', serif;
   font-size: 36px;
   font-style: normal;
   font-weight: 400;
