@@ -20,7 +20,6 @@
   position: relative;
   display: flex;
   background: url(../../images/form-img.jpg) no-repeat center/cover fixed;
-  display: flex;
 }
 
 .search-form__container {
