@@ -47,6 +47,15 @@
   color: rgba(26, 27, 34, 1);
 }
 
+.news-card-list__card-container {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 288px);
+  justify-content: center;
+  margin: 25px 0 15px;
+  row-gap: 10px;
+}
+
 .news-card-list__button {
   box-sizing: border-box;
   height: 56px;
