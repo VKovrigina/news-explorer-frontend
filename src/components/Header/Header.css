@@ -7,8 +7,19 @@
   top: 0;
   left:0;
   display: flex;
-  background: url(../../images/form-img.jpg) no-repeat center/cover fixed;
-  z-index: 30;
+  background: url(../../images/photo-form.jpg) no-repeat center/cover fixed;
+  z-index: 3;
+}
+
+.header::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .4);
+  z-index: 1;
 }
 
 .header__container {
@@ -17,6 +28,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 2;
 }
 
 .header__logo {
