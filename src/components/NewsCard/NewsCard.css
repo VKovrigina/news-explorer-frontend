@@ -25,13 +25,14 @@
   border-radius: 10px;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .news-card__img {
   height: 196px;
   -webkit-background-size: cover;
   background-size: cover;
-
+  margin: 0;
 }
 
 .news-card__button {
@@ -55,12 +56,13 @@
 }
 
 .news-card__description {
-  margin: 0 16px;
+  margin: 0;
+  padding: 16px 16px;
 }
 
 .news-card__date {
   margin: 0;
-  padding: 16px 0 5px;
+  padding: 0 0 5px;
   font-family: 'Source-sans-pro-regular', 'Arial', 'Helvetica', sans-serif;
   font-size: 18px;
   font-style: normal;
@@ -117,6 +119,6 @@
   letter-spacing: 0.4px;
   text-align: left;
   color: rgba(182, 188, 191, 1);
-  margin: 4px 0 18px;
+  margin: 4px 0 0;
   padding: 0;
 }

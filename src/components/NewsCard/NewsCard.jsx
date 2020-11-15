@@ -18,7 +18,7 @@ function NewsCard({
         <img className="news-card__img" src={image} alt="Картинка к статье" />
         <div className="news-card__description">
           <p className="news-card__date">{date}</p>
-          <h2 className="news-card__title">{title}</h2>
+          <h3 className="news-card__title">{title}</h3>
           <p className="news-card__text">{text}</p>
           <p className="news-card__source">{source}</p>
         </div>
