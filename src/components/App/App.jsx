@@ -7,11 +7,11 @@ import Main from '../Main/Main';
 
 function App() {
   return (
-    <body className="app">
+    <div className="app">
       <Header />
       <Main />
       <Footer />
-    </body>
+    </div>
   );
 }
 
