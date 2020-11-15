@@ -1,7 +1,8 @@
 import React from 'react';
 import './NewsCard.css';
 import PropTypes from 'prop-types';
-// import NotFound from '../../images/not-found.svg';
+import SaveCardInactive from '../../images/Book-mark-inactive.svg';
+import SaveCardActive from '../../images/Book-mark-active.svg';
 
 function NewsCard({
   title,
@@ -11,10 +12,13 @@ function NewsCard({
   link,
   image,
 }) {
+  const [isCardSave, setCardSave] = React.useState(false);
   return (
     <article className="news-card">
+      <button className={`news-card__button ${!isCardSave ? 'news-card__button_inactive' : ''}`} type="button" aria-label="Сохранить статью" onClick={() => setCardSave(!isCardSave)}>
+        <img className="news-card__button-img" src={`${isCardSave ? SaveCardActive : SaveCardInactive}`} alt="Сохранить статью" />
+      </button>
       <a className="news-card__link" target="_blank" rel="noreferrer" href={link}>
-        <button className="news-card__button" type="button" aria-label="Сохранить статью" />
         <img className="news-card__img" src={image} alt="Картинка к статье" />
         <div className="news-card__description">
           <p className="news-card__date">{date}</p>
