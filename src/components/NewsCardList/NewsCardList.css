@@ -28,6 +28,7 @@
   width: calc(100% - 32px);
   padding: 0;
   margin: auto;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,6 +46,7 @@
   letter-spacing: 0px;
   text-align: left;
   color: rgba(26, 27, 34, 1);
+  align-self: start;
 }
 
 .news-card-list__card-container {
@@ -54,6 +56,8 @@
   justify-content: center;
   margin: 25px 0 15px;
   row-gap: 10px;
+  column-gap: 8px;
+  min-width: 100%;
 }
 
 .news-card-list__button {
@@ -61,8 +65,9 @@
   height: 56px;
   border-radius: 80px;
   border: none;
-  width: 100%;
+  min-width: 288px;
   background: rgb(255, 255, 255);
+  cursor: pointer;
   font-family: 'Roboto-medium', serif;
   font-size: 18px;
   font-style: normal;
@@ -70,7 +75,14 @@
   line-height: 24px;
   letter-spacing: 0px;
   text-align: center;
+}
 
+.news-card-list__button:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.news-card-list__button:visited {
+  background: rgb(255, 255, 255);
 }
 
 .news-card-list__circle-preloader {

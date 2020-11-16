@@ -1,5 +1,6 @@
-import img1 from '../images/image_01.jpg';
+import img1 from '../images/image_08.jpg';
 import img2 from '../images/image_04.jpg';
+import img3 from '../images/image_07.jpg';
 
 const data = [
   {
@@ -21,6 +22,16 @@ const data = [
     link: 'https://ria.ru/location_Sankt_Peterburg/',
     image: img2,
     _id: 2,
+  },
+  {
+    keyword: 'Фотография',
+    title: '«Первозданная тайга»: новый фотопроект Игоря Шпиленка',
+    text: 'Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где...',
+    date: '2 августа, 2019',
+    source: 'РИА',
+    link: 'https://ria.ru/location_Sankt_Peterburg/',
+    image: img3,
+    _id: 3,
   },
 
 ];
