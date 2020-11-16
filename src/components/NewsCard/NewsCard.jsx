@@ -15,7 +15,7 @@ function NewsCard({
   const [isCardSave, setCardSave] = React.useState(false);
   return (
     <article className="news-card">
-      <button className={`news-card__button ${!isCardSave ? 'news-card__button_inactive' : ''}`} type="button" aria-label="Сохранить статью" onClick={() => setCardSave(!isCardSave)}>
+      <button className={`news-card__button ${!isCardSave ? 'news-card__button_inactive' : 'news-card__button_active'}`} type="button" aria-label="Сохранить статью" onClick={() => setCardSave(!isCardSave)}>
         <img className="news-card__button-img" src={`${isCardSave ? SaveCardActive : SaveCardInactive}`} alt="Сохранить статью" />
       </button>
       <a className="news-card__link" target="_blank" rel="noreferrer" href={link}>
