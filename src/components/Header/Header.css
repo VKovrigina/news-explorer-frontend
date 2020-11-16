@@ -24,6 +24,7 @@
 
 .header__container {
   margin: auto;
+  max-width: 1232px;
   width: calc(100% - 32px);
   display: flex;
   justify-content: space-between;

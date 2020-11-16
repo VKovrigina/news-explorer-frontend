@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'Roboto-medium';
+  src: url(../../vendor/fonts/roboto-medium.woff) format('woff');
+}
+
+.navigation {
+  display: none;
+  min-width: 235px;
+  grid-template-columns: repeat(3, auto);
+  column-gap: 16px;
+}
+
+.navigation__link {
+  color: rgb(255, 255, 255);
+  font-family: 'Roboto-medium', 'Arial', 'Helvetica', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .navigation {
+    display: grid;
+  }
+}
