@@ -123,6 +123,7 @@
   }
   .news-card-list__card-container {
     margin: 32px 0 22px;
+    grid-template-columns: repeat(auto-fit, 224px);
   }
   .news-card-list__button {
     width: 240px;
@@ -138,6 +139,7 @@
   }
   .news-card-list__card-container {
     margin: 64px 0;
+    grid-template-columns: repeat(auto-fit, 400px);
   }
   .news-card-list__button {
     width: 288px;
