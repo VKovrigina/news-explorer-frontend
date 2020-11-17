@@ -3,8 +3,16 @@
   box-sizing: border-box;
   border-radius: 100px;
   background: inherit;
-  color: rgb(255, 255, 255);
   height: 40px;
+  padding: 0 12px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-button__text {
   font-family: 'Roboto-medium', 'Times New Roman', Times, serif;
   font-size: 16px;
   font-style: normal;
@@ -12,14 +20,21 @@
   line-height: 24px;
   letter-spacing: 0px;
   text-align: center;
-  padding: 0 12px;
-  cursor: pointer;
+  color: rgb(255, 255, 255);
+  padding: 0;
+  margin: 0 7px 0 0;
+  text-overflow: ellipsis;
+  max-width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 @media screen and (min-width: 1400px) {
   .nav-button {
+    height: 48px;
+  }
+  .nav-button__text {
     font-size: 18px;
     line-height: 24px;
-    height: 40px;
   }
 }
