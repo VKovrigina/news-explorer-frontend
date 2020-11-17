@@ -1,13 +1,3 @@
-@font-face {
-  font-family: 'Roboto-slab-regular';
-  src: url(../../vendor/fonts/robotoslab-regular.woff) format('woff');
-}
-
-@font-face {
-  font-family: 'Roboto-regular';
-  src: url(../../vendor/fonts/roboto-regular.woff) format('woff');
-}
-
 .about {
   background: rgb(255, 255, 255);
   padding: 32px 0 80px;

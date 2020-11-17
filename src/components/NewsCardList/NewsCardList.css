@@ -1,18 +1,3 @@
-@font-face {
-  font-family: 'Roboto-slab-regular';
-  src: url(../../vendor/fonts/robotoslab-regular.woff) format('woff');
-}
-
-@font-face {
-  font-family: 'Roboto-medium';
-  src: url(../../vendor/fonts/roboto-medium.woff) format('woff');
-}
-
-@font-face {
-  font-family: 'Roboto-regular';
-  src: url(../../vendor/fonts/roboto-regular.woff) format('woff');
-}
-
 .news-card-list {
   box-sizing: border-box;
   min-height: 145px;
