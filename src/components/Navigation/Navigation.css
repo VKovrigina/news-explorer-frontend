@@ -8,7 +8,7 @@
 
 .navigation__link {
   box-sizing: border-box;
-  color: rgb(255, 255, 255);
+  color: rgba(182, 188, 191, 1);
   font-family: 'Roboto-medium', 'Arial', 'Helvetica', sans-serif;
   font-size: 16px;
   font-style: normal;
@@ -21,12 +21,26 @@
   cursor: pointer;
 }
 
+.navigation__link_black {
+  color: rgb(0, 0, 0);
+}
+
+.navigation__link_white {
+  color: rgba(182, 188, 191, 1);
+}
+
+.navigation__link_white:hover {
+  color: rgb(255, 255, 255);
+}
+
 .navigation__link_active_black {
   border-bottom: 3px solid rgb(0, 0, 0);
+  color: rgb(0, 0, 0);
 }
 
 .navigation__link_active_white {
   border-bottom: 3px solid rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
 @media screen and (min-width: 1400px) {
