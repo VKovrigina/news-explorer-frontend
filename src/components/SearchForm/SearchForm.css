@@ -1,7 +1,6 @@
 .search-form {
   margin-top: 56px;
   box-sizing: border-box;
-  min-height: 480px;
   position: relative;
   display: flex;
   background: url(../../images/photo-form.jpg) no-repeat center/cover fixed;
@@ -20,9 +19,10 @@
 
 .search-form__container {
   box-sizing: border-box;
-  margin: auto;
+  margin: 32px auto;
   min-height: 416px;
   width: calc(100% - 32px);
+  max-width: 460px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -55,6 +55,12 @@
   margin: 16px 0 16px;
 }
 
+.search-form__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .search-form__input {
   box-sizing: border-box;
   padding: 0 16px 0;
@@ -62,7 +68,6 @@
   background: rgb(255, 255, 255);
   min-height: 56px;
   width: 100%;
-  max-width: 460px;
   border-radius: 100px;
   border: none;
   font-family: 'Roboto-regular', 'Arial', 'Helvetica', sans-serif;
@@ -84,8 +89,9 @@
   margin: 0;
   width: 100%;
   min-width: 164px;
+  max-width: 460px;
   background: rgba(47, 113, 229, 1);
-  min-height: 56px;
+  min-height: 60px;
   border-radius: 100px;
   border: none;
   font-family: 'Roboto-medium', 'Arial', 'Helvetica', sans-serif;
@@ -109,4 +115,51 @@
 
 .search-form__submit-button:visited {
   background: rgba(47, 113, 229, 1);
+}
+
+@media screen and (min-width: 768px) {
+  .search-form__container {
+    max-width: 608px;
+    width: 58%;
+    min-height: 250px;
+    margin: 38px auto 48px;
+  }
+  .search-form__title {
+    max-width: 385px;
+  }
+  .search-form__form {
+    flex-direction: row;
+  }
+  .search-form__input {
+    margin: 0;
+    padding: 0 55px 0 16px;
+  }
+  .search-form__submit-button {
+    margin-left: -46px;
+    max-width: 160px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .search-form__container {
+    min-height: 336px;
+    margin: 80px auto;
+  }
+  .search-form__title {
+    max-width: 100%;
+    font-size: 60px;
+    line-height: 64px;
+  }
+  .search-form__description {
+    margin: 32px 0;
+  }
+  .search-form__submit-button {
+    margin-left: -50px;
+    max-width: 164px;
+    min-height: 64px;
+  }
+  .search-form__input {
+    max-width: 100%;
+    min-height: 64px;
+  }
 }

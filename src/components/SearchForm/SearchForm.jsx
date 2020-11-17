@@ -9,7 +9,7 @@ function SearchForm() {
           <h1 className="search-form__title">Что творится в мире?</h1>
           <p className="search-form__description">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
         </div>
-        <form>
+        <form className="search-form__form">
           <input className="search-form__input" placeholder="Природа" required />
           <button className="search-form__submit-button" type="submit">Искать</button>
         </form>
