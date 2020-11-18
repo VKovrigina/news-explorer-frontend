@@ -57,3 +57,39 @@
 .about__paragraph:last-of-type {
   margin: 0;
 }
+
+@media screen and (min-width: 768px) {
+  .about {
+    padding: 40px 0 72px;
+  }
+  .about__container {
+    align-items: center;
+  }
+  .about__author-photo {
+    width: 232px;
+    height: 232px;
+    margin: 0 32px 0 0;
+  }
+  .about__content {
+    width: 55%;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .about {
+    padding: 80px 0;
+  }
+  .about__author-photo {
+    width: 465px;
+    height: 465px;
+    margin: 0 55px 0 0;
+  }
+  .about__content {
+    min-height: 365px;
+  }
+  .about__title {
+    font-size: 40px;
+    line-height: 46px;
+  }
+}
