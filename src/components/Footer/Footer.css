@@ -4,7 +4,7 @@
   min-height: 165px;
   width: 100%;
   position: relative;
-  padding: 0;
+  padding: 15px 0;
   margin: auto auto 0;
   display: flex;
 }
@@ -18,21 +18,30 @@
   justify-content: space-between;
 }
 
-.footer__copyright {
-  color: rgba(182, 188, 191, 1);
-  font-family: 'Roboto-regular', 'Arial', 'Helvetica', sans-serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 22px;
-  letter-spacing: 0px;
-  text-align: left;
+.footer__links {
+  display: flex;
+  flex-direction: row;
+  margin: 0 20px 0 0;
 }
 
 .footer__ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
+}
+
+.footer__ul_type_socials {
+  display: grid;
+  min-width: 68px;
+  grid-template-columns: repeat(2, 20px);
+  gap: 23px 28px;
+}
+
+.footer__ul_type_links {
+  display: grid;
+  grid-auto-flow: row;
+  min-width: 210px;
+  gap: 23px 20px;
 }
 
 .footer__link {
@@ -45,22 +54,81 @@
   line-height: 24px;
   letter-spacing: 0px;
   text-align: center;
-  margin: 12px 0 12px;
+  transition: linear 100ms opacity;
 }
 
-.footer__li {
+.footer__link:hover {
+  opacity: 0.7;
+}
+
+/* .footer__li {
   margin: 11.5px 0 11.5px;
 }
 
-.footer__ul_type_socials {
-  display: grid;
-  min-width: 68px;
-  grid-template-columns: repeat(2, 20px);
-  gap: 0 28px;
+.footer__li:first-of-type {
+  margin: 0 0 11.5px;
 }
 
-.footer__ul_type_links {
-  display: flex;
-  flex-direction: column;
+.footer__li:last-of-type {
+  margin: 11.5px 0 0;
+} */
+
+.footer__socials-icon {
+  transition: linear 100ms opacity;
+}
+
+.footer__socials-icon:hover {
+  opacity: .7;
+}
+
+.footer__socials-icon:visited {
+  opacity: 1;
+}
+
+.footer__copyright {
+  color: rgba(182, 188, 191, 1);
+  font-family: 'Roboto-regular', 'Arial', 'Helvetica', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin: 40px 0 0 0;
+}
+
+/* @media screen and (min-width: 550px) {
+  .footer__copyright {
+    order: -1;
+    margin: 0 10px 0 0;
+  }
+  .footer__ul_type_socials {
+    grid-template-columns: repeat(auto-fit, 20px);
+  }
+} */
+
+@media screen and (min-width: 768px) {
+  .footer {
+    min-height: 80px;
+  }
+  .footer__container {
+    width: 90%;
+    max-width: 1232px;
+    align-items: center;
+  }
+  .footer__links {
+    margin: 0;
+  }
+  .footer__ul_type_socials {
+    grid-auto-flow: column;
+  }
+  .footer__ul_type_links {
+    grid-auto-flow: column;
+    margin: 0 40px 0 0;
+  }
+  .footer__copyright {
+    order: -1;
+    margin: 0 20px 0 0;
+  }
 }
 
