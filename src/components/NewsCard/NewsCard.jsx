@@ -5,6 +5,7 @@ import NewsCardButton from '../NewsCardButton/NewsCardButton';
 
 function NewsCard({
   isMainPage,
+  keyword,
   title,
   text,
   date,
@@ -15,6 +16,7 @@ function NewsCard({
   return (
     <article className="news-card">
       <NewsCardButton isMainPage={isMainPage} />
+      {!isMainPage && <div className="news-card__keyword">{keyword}</div>}
       <a className="news-card__link" target="_blank" rel="noreferrer" href={link}>
         <img className="news-card__img" src={image} alt="Картинка к статье" />
         <div className="news-card__description">
@@ -29,7 +31,7 @@ function NewsCard({
 }
 
 NewsCard.propTypes = {
-  // keyword: PropTypes.string.isRequired,
+  keyword: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,

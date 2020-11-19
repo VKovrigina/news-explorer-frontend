@@ -53,3 +53,17 @@
   margin: 4px 0 0;
   z-index: 5;
 }
+
+@media screen and (min-width: 768px) {
+  .news-card__button {
+    top: 8px;
+    right: 8px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .news-card__button {
+    top: 24px;
+    right: 24px;
+  }
+}
