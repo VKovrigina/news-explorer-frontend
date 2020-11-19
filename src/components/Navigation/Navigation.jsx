@@ -17,8 +17,8 @@ function Navigation({ isLoggedIn, setIsLoggedIn }) {
       {isLoggedIn
       && (
       <Link
-        to="/"
-        className="navigation__link navigation__link_white"
+        to="/saved-news"
+        className={`navigation__link navigation__link_white ${location.pathname === '/saved-news' ? 'navigation__link_active_white' : ''}`}
       >
         Сохраненные статьи
       </Link>
