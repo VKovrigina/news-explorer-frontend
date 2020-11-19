@@ -4,7 +4,7 @@ import AuthorPhoto from '../../images/author-photo.jpg';
 
 function About() {
   return (
-    <div className="about">
+    <section className="about">
       <div className="about__container">
         <img className="about__author-photo" alt="Фото автора" src={AuthorPhoto} />
         <div className="about__content">
@@ -13,7 +13,7 @@ function About() {
           <p className="about__paragraph">Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и чем можете помочь потенциальным заказчикам.</p>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
