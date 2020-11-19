@@ -30,7 +30,7 @@ function Navigation({ isLoggedIn, setIsLoggedIn }) {
 }
 
 Navigation.propTypes = {
-  isLoggedIn: PropTypes.string.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
   setIsLoggedIn: PropTypes.func.isRequired,
 };
 

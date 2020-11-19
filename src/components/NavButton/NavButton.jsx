@@ -20,7 +20,7 @@ function NavButton({ isLoggedIn }) {
 }
 
 NavButton.propTypes = {
-  isLoggedIn: PropTypes.string.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default NavButton;
