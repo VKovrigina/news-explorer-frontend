@@ -7,7 +7,7 @@ function SavedNews() {
   return (
     <>
       <SavedNewsHeader />
-      <NewsCardList />
+      <NewsCardList isMainPage={false} />
     </>
   );
 }

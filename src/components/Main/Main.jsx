@@ -8,7 +8,7 @@ function Main() {
   return (
     <>
       <SearchForm />
-      <NewsCardList />
+      <NewsCardList isMainPage />
       <About />
     </>
   );
