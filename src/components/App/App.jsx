@@ -5,6 +5,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
+import { dataMain, dataSave } from '../../utils/data';
 
 function App() {
   const location = useLocation();
@@ -13,10 +14,10 @@ function App() {
       <Header pathname={location.pathname} />
       <Switch>
         <Route path="/saved-news">
-          <SavedNews />
+          <SavedNews cards={dataSave} />
         </Route>
         <Route path="/">
-          <Main />
+          <Main cards={dataMain} />
         </Route>
 
       </Switch>

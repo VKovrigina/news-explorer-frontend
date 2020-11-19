@@ -1,10 +1,10 @@
 import React from 'react';
 import './NewsCard.css';
 import PropTypes from 'prop-types';
-import SaveCardInactive from '../../images/Book-mark-inactive.svg';
-import SaveCardActive from '../../images/Book-mark-active.svg';
+import NewsCardButton from '../NewsCardButton/NewsCardButton';
 
 function NewsCard({
+  isMainPage,
   title,
   text,
   date,
@@ -12,12 +12,9 @@ function NewsCard({
   link,
   image,
 }) {
-  const [isCardSave, setCardSave] = React.useState(false);
   return (
     <article className="news-card">
-      <button className={`news-card__button ${!isCardSave ? 'news-card__button_inactive' : 'news-card__button_active'}`} type="button" aria-label="Сохранить статью" onClick={() => setCardSave(!isCardSave)}>
-        <img className="news-card__button-img" src={`${isCardSave ? SaveCardActive : SaveCardInactive}`} alt="Сохранить статью" />
-      </button>
+      <NewsCardButton isMainPage={isMainPage} />
       <a className="news-card__link" target="_blank" rel="noreferrer" href={link}>
         <img className="news-card__img" src={image} alt="Картинка к статье" />
         <div className="news-card__description">
@@ -39,6 +36,7 @@ NewsCard.propTypes = {
   source: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
+  isMainPage: PropTypes.bool.isRequired,
 };
 
 export default NewsCard;
