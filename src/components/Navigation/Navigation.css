@@ -19,10 +19,15 @@
   text-decoration: none;
   padding: 20px 0;
   cursor: pointer;
+  transition: linear 100ms color;
 }
 
 .navigation__link_black {
-  color: rgb(0, 0, 0);
+  color: rgba(0, 0, 0, .6);
+}
+
+.navigation__link_black:hover {
+  color: rgba(0, 0, 0, 1);
 }
 
 .navigation__link_white {

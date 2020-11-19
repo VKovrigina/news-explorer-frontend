@@ -7,11 +7,15 @@
   top: 0;
   left:0;
   display: flex;
-  background: url(../../images/photo-form.jpg) no-repeat center/cover fixed;
   z-index: 3;
 }
 
-.header::before {
+.header_bg_img {
+  background: url(../../images/photo-form.jpg) no-repeat center/cover fixed;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.header_bg_img::before {
   position: absolute;
   content: '';
   top: 0;
@@ -20,6 +24,11 @@
   bottom: 0;
   background: rgba(0, 0, 0, .4);
   z-index: 1;
+}
+
+.header_bg_white {
+  background: rgb(255, 255, 255) no-repeat center/cover fixed;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
 }
 
 .header__container {
@@ -51,7 +60,6 @@
 .header__burger-button::before,
 .header__burger-button::after {
   content: '';
-  background: #fff;
   position: absolute;
   width: 100%;
   height: 2px;
@@ -65,6 +73,20 @@
 
 .header__burger-button::after {
   bottom: 0;
+}
+
+.header__burger-button_white::before {
+  background: rgb(255, 255, 255);
+}
+.header__burger-button_white::after {
+  background: rgb(255, 255, 255);
+}
+
+.header__burger-button_black::before {
+  background: rgb(26, 27, 34);
+}
+.header__burger-button_black::after {
+  background: rgb(26, 27, 34);
 }
 
 .header__burger-button_active::before {

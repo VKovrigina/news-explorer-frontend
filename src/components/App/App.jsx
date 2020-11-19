@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -7,9 +7,10 @@ import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
 
 function App() {
+  const location = useLocation();
   return (
     <div className="app">
-      <Header />
+      <Header pathname={location.pathname} />
       <Switch>
         <Route path="/saved-news">
           <SavedNews />
