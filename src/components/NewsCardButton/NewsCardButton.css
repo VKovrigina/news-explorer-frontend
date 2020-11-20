@@ -49,6 +49,7 @@
 }
 
 .news-card__button::after {
+  display: none;
   content: attr(data-tooltip);
   position: absolute;
   top: 0;
@@ -90,6 +91,9 @@
   .news-card__button {
     top: 8px;
     right: 8px;
+  }
+  .news-card__button::after {
+    display: block;
   }
 }
 
