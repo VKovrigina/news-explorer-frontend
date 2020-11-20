@@ -9,15 +9,17 @@ import { dataMain, dataSave } from '../../utils/data';
 
 function App() {
   const location = useLocation();
+  // eslint-disable-next-line no-unused-vars
+  const [isUserLoggedIn, setUserLoggedIn] = React.useState(false);
   return (
     <div className="app">
-      <Header pathname={location.pathname} />
+      <Header pathname={location.pathname} isLoggedIn={isUserLoggedIn} />
       <Switch>
         <Route path="/saved-news">
-          <SavedNews cards={dataSave} />
+          <SavedNews cards={dataSave} isLoggedIn={isUserLoggedIn} />
         </Route>
         <Route path="/">
-          <Main cards={dataMain} />
+          <Main cards={dataMain} isLoggedIn={isUserLoggedIn} />
         </Route>
 
       </Switch>

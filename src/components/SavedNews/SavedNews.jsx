@@ -4,11 +4,11 @@ import './SavedNews.css';
 import NewsCardList from '../NewsCardList/NewsCardList';
 import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 
-function SavedNews({ cards }) {
+function SavedNews({ cards, isLoggedIn }) {
   return (
     <>
       <SavedNewsHeader />
-      <NewsCardList isMainPage={false} cards={cards} />
+      <NewsCardList isMainPage={false} cards={cards} isLoggedIn={isLoggedIn} />
     </>
   );
 }
@@ -16,6 +16,7 @@ function SavedNews({ cards }) {
 SavedNews.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   cards: PropTypes.array.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default SavedNews;
