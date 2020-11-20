@@ -1,7 +1,7 @@
 import React from 'react';
 import './NewsCardList.css';
 import PropTypes from 'prop-types';
-// import NotFound from '../../images/not-found.svg';
+import NotFound from '../NotFound/NotFound';
 import NewsCard from '../NewsCard/NewsCard';
 // import Preloader from '../Preloader/Preloader';
 
@@ -10,6 +10,7 @@ function NewsCardList({ isMainPage, cards, isLoggedIn }) {
     <section className="news-card-list">
       <div className="news-card-list__container">
         {isMainPage && <h2 className="news-card-list__title">Результаты поиска</h2>}
+        {cards.length > 0 && (
         <div className="news-card-list__card-container">
           {cards.map((card) => (
             <NewsCard
@@ -20,13 +21,10 @@ function NewsCardList({ isMainPage, cards, isLoggedIn }) {
             />
           ))}
         </div>
+        )}
         {isMainPage && <button className="news-card-list__button" type="button">Показать еще</button>}
         {/* <Preloader /> */}
-        {/* <img className="news-card-list__not-found-img" alt="Ничего не найдено" src={NotFound} />
-        <p className="news-card-list__not-found-title">Ничего не найдено</p>
-        <p className="new-card-list__description">
-          К сожалению по вашему запросу ничего не найдено.
-        </p> */}
+        {cards.length === 0 && <NotFound isMainPage={isMainPage} />}
       </div>
     </section>
   );
