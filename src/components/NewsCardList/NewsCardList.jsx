@@ -3,6 +3,7 @@ import './NewsCardList.css';
 import PropTypes from 'prop-types';
 // import NotFound from '../../images/not-found.svg';
 import NewsCard from '../NewsCard/NewsCard';
+// import Preloader from '../Preloader/Preloader';
 
 function NewsCardList({ isMainPage, cards, isLoggedIn }) {
   return (
@@ -20,8 +21,7 @@ function NewsCardList({ isMainPage, cards, isLoggedIn }) {
           ))}
         </div>
         {isMainPage && <button className="news-card-list__button" type="button">Показать еще</button>}
-        {/* <i className="news-card-list__circle-preloader" />
-        <p className="new-card-list__description">Идет поиск новостей...</p> */}
+        {/* <Preloader /> */}
         {/* <img className="news-card-list__not-found-img" alt="Ничего не найдено" src={NotFound} />
         <p className="news-card-list__not-found-title">Ничего не найдено</p>
         <p className="new-card-list__description">
