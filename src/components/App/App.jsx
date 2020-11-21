@@ -8,21 +8,29 @@ import SavedNews from '../SavedNews/SavedNews';
 import { dataMain, dataSave } from '../../utils/data';
 import LoginPopup from '../LoginPopup/LoginPopup';
 import RegisterPopup from '../RegisterPopup/RegisterPopup';
+import UserRegisteredMessagePopup from '../UserRegisteredMessagePopup/UserRegisteredMessagePopup';
 
 function App() {
   const location = useLocation();
   // eslint-disable-next-line no-unused-vars
   const [isUserLoggedIn, setUserLoggedIn] = React.useState(false);
-  const [openedPopup, setOpenedPopup] = React.useState({});
+  const [isLoginPopupOpen, setIsLoginPopupOpen] = React.useState(false);
+  const [isRegisterPopupOpen, setIsRegisterPopupOpen] = React.useState(false);
+  const [isUserRegisteredPopupOpen, setIsUserRegisteredPopupOpen] = React.useState(true);
   function handleLoginPopupOpen() {
-    setOpenedPopup({ isLoginPopupOpen: true });
+    setIsLoginPopupOpen(true);
   }
   function handleRegisterPopupOpen() {
-    setOpenedPopup({ isRegisterPopupOpen: true });
+    setIsRegisterPopupOpen(true);
+  }
+  // eslint-disable-next-line no-unused-vars
+  function handleUserRegisteredOpen() {
+    setIsUserRegisteredPopupOpen(true);
   }
   function closeAllPopups() {
-    setOpenedPopup({ isLoginPopupOpen: false });
-    setOpenedPopup({ isRegisterPopupOpen: false });
+    setIsLoginPopupOpen(false);
+    setIsUserRegisteredPopupOpen(false);
+    setIsRegisterPopupOpen(false);
   }
   function closePopupByEscAndOverlay() {
     function handleEscClose(e) {
@@ -63,15 +71,21 @@ function App() {
       </Switch>
       <Footer />
       <LoginPopup
-        isOpen={openedPopup.isLoginPopupOpen}
+        isOpen={isLoginPopupOpen}
         closeByEscAndOverlay={closePopupByEscAndOverlay}
-        onClose={() => setOpenedPopup({ isLoginPopupOpen: false })}
+        onClose={() => setIsLoginPopupOpen(false)}
         openRegisterPopup={handleRegisterPopupOpen}
       />
       <RegisterPopup
-        isOpen={openedPopup.isRegisterPopupOpen}
+        isOpen={isRegisterPopupOpen}
         closeByEscAndOverlay={closePopupByEscAndOverlay}
-        onClose={() => setOpenedPopup({ isRegisterPopupOpen: false })}
+        onClose={() => setIsRegisterPopupOpen(false)}
+        openLoginPopup={handleLoginPopupOpen}
+      />
+      <UserRegisteredMessagePopup
+        isOpen={isUserRegisteredPopupOpen}
+        closeByEscAndOverlay={closePopupByEscAndOverlay}
+        onClose={() => setIsUserRegisteredPopupOpen(false)}
         openLoginPopup={handleLoginPopupOpen}
       />
     </div>

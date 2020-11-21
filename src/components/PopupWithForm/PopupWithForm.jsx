@@ -11,6 +11,7 @@ function PopupWithForm({
   buttonText,
   linkText,
   openOtherPopup,
+  isMessagePopup,
 }) {
   React.useEffect(() => {
     closeByEscAndOverlay();
@@ -29,12 +30,18 @@ function PopupWithForm({
         />
         <form className="popup__form" method="get" action="#">
           <h2 className="popup__form-title">{title}</h2>
-          {children}
-          <button className="popup__form-button" type="submit">{buttonText}</button>
-          <p className="popup__form-paragraph">
-            или&nbsp;
-            <button className="popup__form-link" type="button" onClick={() => openOtherPopup()}>{linkText}</button>
-          </p>
+          {!isMessagePopup
+            ? (
+              <>
+                {children}
+                <button className="popup__form-button" type="submit">{buttonText}</button>
+                <p className="popup__form-paragraph">
+                  или&nbsp;
+                  <button className="popup__form-link popup__form-link_type_s" type="button" onClick={() => openOtherPopup()}>{linkText}</button>
+                </p>
+              </>
+            )
+            : <button className="popup__form-link popup__form-link_type_m" type="button" onClick={() => openOtherPopup()}>{linkText}</button>}
         </form>
       </div>
     </div>
@@ -43,11 +50,12 @@ function PopupWithForm({
 
 PopupWithForm.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  children: PropTypes.node,
   onClose: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
   closeByEscAndOverlay: PropTypes.func.isRequired,
-  // isMessagePopup: PropTypes.bool.isRequired,
+  isMessagePopup: PropTypes.bool.isRequired,
   buttonText: PropTypes.string.isRequired,
   linkText: PropTypes.string.isRequired,
   openOtherPopup: PropTypes.func.isRequired,
