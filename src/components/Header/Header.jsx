@@ -5,7 +5,7 @@ import HeaderLogoWhite from '../../images/Logo-white.svg';
 import Navigation from '../Navigation/Navigation';
 import HeaderLogoBlack from '../../images/Logo-black.svg';
 
-function Header({ pathname, isLoggedIn }) {
+function Header({ pathname, isLoggedIn, openLoginPopup }) {
   const [isButtonActive, setIsButtonActive] = React.useState(false);
   function headerClasses() {
     let classes = 'header';
@@ -26,7 +26,11 @@ function Header({ pathname, isLoggedIn }) {
           role="button"
           aria-hidden="true"
         />
-        <Navigation isLoggedIn={isLoggedIn} pathname={pathname} />
+        <Navigation
+          isLoggedIn={isLoggedIn}
+          pathname={pathname}
+          openLoginPopup={openLoginPopup}
+        />
       </div>
     </header>
 
@@ -36,6 +40,7 @@ function Header({ pathname, isLoggedIn }) {
 Header.propTypes = {
   pathname: PropTypes.string.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
+  openLoginPopup: PropTypes.func.isRequired,
 };
 
 export default Header;

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './Navigation.css';
 import NavButton from '../NavButton/NavButton';
 
-function Navigation({ isLoggedIn, pathname }) {
+function Navigation({ isLoggedIn, pathname, openLoginPopup }) {
   return (
     <nav className="navigation">
       <Link
@@ -22,7 +22,7 @@ function Navigation({ isLoggedIn, pathname }) {
         Сохраненные статьи
       </Link>
       )}
-      <NavButton isLoggedIn={isLoggedIn} pathname={pathname} />
+      <NavButton isLoggedIn={isLoggedIn} pathname={pathname} openLoginPopup={openLoginPopup} />
     </nav>
 
   );
@@ -31,6 +31,7 @@ function Navigation({ isLoggedIn, pathname }) {
 Navigation.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   pathname: PropTypes.string.isRequired,
+  openLoginPopup: PropTypes.func.isRequired,
 };
 
 export default Navigation;

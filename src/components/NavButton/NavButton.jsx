@@ -4,9 +4,14 @@ import './NavButton.css';
 import ExitIconBlack from '../../images/Union-exit-black.svg';
 import ExitIconWhite from '../../images/Union-exit-white.svg';
 
-function NavButton({ isLoggedIn, pathname }) {
+function NavButton({ isLoggedIn, pathname, openLoginPopup }) {
+  function onClickFunction() {
+    if (!isLoggedIn) {
+      openLoginPopup();
+    }
+  }
   return (
-    <button type="button" className={`nav-button ${pathname === '/' ? 'nav-button_type_white' : 'nav-button_type_black'}`}>
+    <button type="button" onClick={onClickFunction} className={`nav-button ${pathname === '/' ? 'nav-button_type_white' : 'nav-button_type_black'}`}>
       {isLoggedIn
         ? (
           <>
@@ -22,6 +27,7 @@ function NavButton({ isLoggedIn, pathname }) {
 NavButton.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   pathname: PropTypes.string.isRequired,
+  openLoginPopup: PropTypes.func.isRequired,
 };
 
 export default NavButton;
