@@ -6,7 +6,8 @@ import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
 import { dataMain, dataSave } from '../../utils/data';
-import PopupWithForm from '../PopupWithForm/PopupWithForm';
+import LoginPopup from '../LoginPopup/LoginPopup';
+import RegisterPopup from '../RegisterPopup/RegisterPopup';
 
 function App() {
   const location = useLocation();
@@ -16,8 +17,12 @@ function App() {
   function handleLoginPopupOpen() {
     setOpenedPopup({ isLoginPopupOpen: true });
   }
+  function handleRegisterPopupOpen() {
+    setOpenedPopup({ isRegisterPopupOpen: true });
+  }
   function closeAllPopups() {
     setOpenedPopup({ isLoginPopupOpen: false });
+    setOpenedPopup({ isRegisterPopupOpen: false });
   }
   function closePopupByEscAndOverlay() {
     function handleEscClose(e) {
@@ -57,13 +62,18 @@ function App() {
 
       </Switch>
       <Footer />
-      <PopupWithForm
+      <LoginPopup
         isOpen={openedPopup.isLoginPopupOpen}
         closeByEscAndOverlay={closePopupByEscAndOverlay}
         onClose={() => setOpenedPopup({ isLoginPopupOpen: false })}
-      >
-        ntrn
-      </PopupWithForm>
+        openRegisterPopup={handleRegisterPopupOpen}
+      />
+      <RegisterPopup
+        isOpen={openedPopup.isRegisterPopupOpen}
+        closeByEscAndOverlay={closePopupByEscAndOverlay}
+        onClose={() => setOpenedPopup({ isRegisterPopupOpen: false })}
+        openLoginPopup={handleLoginPopupOpen}
+      />
     </div>
   );
 }
