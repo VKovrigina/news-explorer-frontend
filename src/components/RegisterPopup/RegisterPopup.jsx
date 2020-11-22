@@ -25,14 +25,17 @@ function RegisterPopup({
         Email
       </label>
       <input type="email" id="register-email" className="popup__form-input" placeholder="Введите почту" required />
+      <span className="popup__span-error">Введите почту</span>
       <label htmlFor="register-password" className="popup__form-label">
         Пароль
       </label>
       <input type="password" id="register-password" className="popup__form-input" placeholder="Введите пароль" required />
+      <span className="popup__span-error">Введите пароль</span>
       <label htmlFor="register-name" className="popup__form-label">
         Имя
       </label>
       <input type="password" id="register-name" className="popup__form-input" placeholder="Введите свое имя" required />
+      <span className="popup__span-error">Введите имя</span>
     </PopupWithForm>
   );
 }

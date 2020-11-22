@@ -34,6 +34,7 @@ function PopupWithForm({
             ? (
               <>
                 {children}
+                <span className="popup__span-error popup__span-error_position_center">Такой пользователь уже существует</span>
                 <button className="popup__form-button" type="submit">{buttonText}</button>
                 <p className="popup__form-paragraph">
                   или&nbsp;

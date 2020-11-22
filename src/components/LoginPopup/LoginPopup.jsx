@@ -25,10 +25,12 @@ function LoginPopup({
         Email
       </label>
       <input type="email" id="login-email" className="popup__form-input" placeholder="Введите почту" required />
+      <span className="popup__span-error">Введите почту</span>
       <label htmlFor="login-password" className="popup__form-label">
         Пароль
       </label>
       <input type="password" id="login-password" className="popup__form-input" placeholder="Введите пароль" required />
+      <span className="popup__span-error">Введите пароль</span>
     </PopupWithForm>
   );
 }
