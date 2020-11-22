@@ -2,12 +2,20 @@
   box-sizing: border-box;
   min-height: 56px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+  display: flex;
+  z-index: 3;
+}
+
+.header_position_fixed {
   position: fixed;
   width: 100%;
   top: 0;
   left:0;
-  display: flex;
-  z-index: 3;
+}
+
+.header_position_relative {
+  position: relative;
 }
 
 .header_bg_img {
@@ -29,6 +37,11 @@
 .header_bg_white {
   background: rgb(255, 255, 255) no-repeat center/cover fixed;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
+}
+
+.header_bg_dark {
+  background: rgb(26,27,34) no-repeat center/cover fixed;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .header__container {

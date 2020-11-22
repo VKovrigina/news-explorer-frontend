@@ -11,6 +11,11 @@
   justify-content: center;
 }
 
+.nav-button_mobile {
+  width: 100%;
+  max-width: 288px;
+}
+
 .nav-button_type_white {
   border: 1px solid rgb(255, 255, 255);
 }

@@ -9,14 +9,17 @@ import { dataMain, dataSave } from '../../utils/data';
 import LoginPopup from '../LoginPopup/LoginPopup';
 import RegisterPopup from '../RegisterPopup/RegisterPopup';
 import UserRegisteredMessagePopup from '../UserRegisteredMessagePopup/UserRegisteredMessagePopup';
+import MobileMenu from '../MobileMenu/MobileMenu';
 
 function App() {
   const location = useLocation();
   // eslint-disable-next-line no-unused-vars
-  const [isUserLoggedIn, setUserLoggedIn] = React.useState(false);
+  const [isUserLoggedIn, setUserLoggedIn] = React.useState(true);
   const [isLoginPopupOpen, setIsLoginPopupOpen] = React.useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = React.useState(false);
-  const [isUserRegisteredPopupOpen, setIsUserRegisteredPopupOpen] = React.useState(true);
+  const [isUserRegisteredPopupOpen, setIsUserRegisteredPopupOpen] = React.useState(false);
+  const [isMenuMobileOpen, setIsMenuMobileOpen] = React.useState(false);
+  const [isButtonMenuActive, setIsButtonMenuActive] = React.useState(false);
   function handleLoginPopupOpen() {
     setIsLoginPopupOpen(true);
   }
@@ -31,6 +34,8 @@ function App() {
     setIsLoginPopupOpen(false);
     setIsUserRegisteredPopupOpen(false);
     setIsRegisterPopupOpen(false);
+    setIsMenuMobileOpen(false);
+    setIsButtonMenuActive(false);
   }
   function closePopupByEscAndOverlay() {
     function handleEscClose(e) {
@@ -40,7 +45,7 @@ function App() {
     }
 
     function closeByOverlay(e) {
-      if (e.target.classList.contains('popup_open')) {
+      if (e.target.classList.contains('popup_open') || e.target.classList.contains('menu_open')) {
         closeAllPopups();
       }
     }
@@ -53,12 +58,32 @@ function App() {
       document.removeEventListener('click', closeByOverlay);
     };
   }
+  function handleMenuMobile() {
+    setIsMenuMobileOpen(!isMenuMobileOpen);
+  }
+  function handleMenuButtonMobile() {
+    setIsButtonMenuActive(!isButtonMenuActive);
+  }
+  function isHiddenHeaderButton() {
+    let isHidden;
+    if (isRegisterPopupOpen || isLoginPopupOpen) {
+      isHidden = true;
+    } else {
+      isHidden = false;
+    }
+    return isHidden;
+  }
   return (
     <div className="app">
       <Header
         pathname={location.pathname}
         isLoggedIn={isUserLoggedIn}
         openLoginPopup={handleLoginPopupOpen}
+        isMenu={false}
+        handleMenu={handleMenuMobile}
+        isButtonActive={isButtonMenuActive}
+        handleButtonMenu={handleMenuButtonMobile}
+        isHiddenHeaderButton={isHiddenHeaderButton()}
       />
       <Switch>
         <Route path="/saved-news">
@@ -87,6 +112,17 @@ function App() {
         closeByEscAndOverlay={closePopupByEscAndOverlay}
         onClose={() => setIsUserRegisteredPopupOpen(false)}
         openLoginPopup={handleLoginPopupOpen}
+      />
+      <MobileMenu
+        isOpen={isMenuMobileOpen}
+        pathname={location.pathname}
+        isLoggedIn={isUserLoggedIn}
+        openLoginPopup={handleLoginPopupOpen}
+        handleMenu={handleMenuMobile}
+        isButtonActive={isButtonMenuActive}
+        handleButtonMenu={handleMenuButtonMobile}
+        closeByEscAndOverlay={closePopupByEscAndOverlay}
+        isHiddenHeaderButton={isHiddenHeaderButton()}
       />
     </div>
   );
