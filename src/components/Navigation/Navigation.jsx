@@ -5,7 +5,7 @@ import './Navigation.css';
 import NavButton from '../NavButton/NavButton';
 
 function Navigation({
-  isLoggedIn, pathname, openLoginPopup, isMenu,
+  isLoggedIn, pathname, openLoginPopup, isMenu, closeMenu,
 }) {
   function mainLinkClasses() {
     let classes = 'navigation__link';
@@ -33,11 +33,17 @@ function Navigation({
     }
     return classes;
   }
+  function closeMenuByClick() {
+    if (isMenu) {
+      closeMenu();
+    }
+  }
   return (
     <nav className={`navigation ${isMenu ? 'navigation_mobile' : ''}`}>
       <Link
         to="/"
         className={mainLinkClasses()}
+        onClick={closeMenuByClick}
       >
         Главная
       </Link>
@@ -46,6 +52,7 @@ function Navigation({
       <Link
         to="/saved-news"
         className={newsLinkClasses()}
+        onClick={closeMenuByClick}
       >
         Сохраненные статьи
       </Link>
@@ -66,6 +73,7 @@ Navigation.propTypes = {
   pathname: PropTypes.string.isRequired,
   openLoginPopup: PropTypes.func.isRequired,
   isMenu: PropTypes.bool.isRequired,
+  closeMenu: PropTypes.func.isRequired,
 };
 
 export default Navigation;

@@ -84,6 +84,7 @@ function App() {
         isButtonActive={isButtonMenuActive}
         handleButtonMenu={handleMenuButtonMobile}
         isHiddenHeaderButton={isHiddenHeaderButton()}
+        closeMenu={closeAllPopups}
       />
       <Switch>
         <Route path="/saved-news">
@@ -123,6 +124,7 @@ function App() {
         handleButtonMenu={handleMenuButtonMobile}
         closeByEscAndOverlay={closePopupByEscAndOverlay}
         isHiddenHeaderButton={isHiddenHeaderButton()}
+        closeMenu={closeAllPopups}
       />
     </div>
   );

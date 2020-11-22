@@ -9,6 +9,7 @@ function Header({
   pathname,
   isHiddenHeaderButton,
   isLoggedIn, openLoginPopup, isMenu, handleMenu, isButtonActive, handleButtonMenu,
+  closeMenu,
 }) {
   function headerClasses() {
     let classes = 'header';
@@ -47,6 +48,7 @@ function Header({
             pathname={pathname}
             openLoginPopup={openLoginPopup}
             isMenu={isMenu}
+            closeMenu={closeMenu}
           />
         )}
       </div>
@@ -64,6 +66,7 @@ Header.propTypes = {
   isButtonActive: PropTypes.bool.isRequired,
   handleButtonMenu: PropTypes.func.isRequired,
   isHiddenHeaderButton: PropTypes.bool.isRequired,
+  closeMenu: PropTypes.func.isRequired,
 };
 
 export default Header;
