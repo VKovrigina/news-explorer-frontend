@@ -20,6 +20,20 @@
 }
 
 @font-face {
+  font-family: 'Roboto-bold';
+  font-style:  normal;
+  font-weight: 700;
+  src: url(../../vendor/fonts/roboto-bold.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Roboto-black';
+  font-style:  normal;
+  font-weight: 900;
+  src: url(../../vendor/fonts/roboto-black.woff) format('woff');
+}
+
+@font-face {
   font-family: 'Source-sans-pro-regular';
   font-style:  normal;
   font-weight: 400;
