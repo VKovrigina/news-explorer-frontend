@@ -17,11 +17,11 @@ function NavButton({
       {isLoggedIn
         ? (
           <>
-            <p className={`nav-button__text ${pathname === '/' ? 'nav-button__text_type_white' : 'nav-button__text_type_black'}`}>Имя пользователя</p>
+            <span className={`nav-button__text ${pathname === '/' ? 'nav-button__text_type_white' : 'nav-button__text_type_black'}`}>Имя пользователя</span>
             <img className="nav-button__icon" alt="" src={`${pathname === '/' ? ExitIconWhite : ExitIconBlack}`} />
           </>
         )
-        : <p className={`nav-button__text ${pathname === '/' ? 'nav-button__text_type_white' : 'nav-button__text_type_black'}`}>Авторизоваться</p>}
+        : <span className={`nav-button__text ${pathname === '/' ? 'nav-button__text_type_white' : 'nav-button__text_type_black'}`}>Авторизоваться</span>}
     </button>
   );
 }
