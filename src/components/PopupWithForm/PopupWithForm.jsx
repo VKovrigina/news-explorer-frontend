@@ -22,7 +22,6 @@ function PopupWithForm({
       <div className="popup__container">
         <span
           className="popup__close-button"
-          type="button"
           aria-label="Закрыть"
           onClick={onClose}
           role="button"
