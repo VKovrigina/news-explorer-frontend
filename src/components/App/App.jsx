@@ -14,7 +14,7 @@ import MobileMenu from '../MobileMenu/MobileMenu';
 function App() {
   const location = useLocation();
   // eslint-disable-next-line no-unused-vars
-  const [isUserLoggedIn, setUserLoggedIn] = React.useState(true);
+  const [isUserLoggedIn, setUserLoggedIn] = React.useState(false);
   const [isLoginPopupOpen, setIsLoginPopupOpen] = React.useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = React.useState(false);
   const [isUserRegisteredPopupOpen, setIsUserRegisteredPopupOpen] = React.useState(false);
