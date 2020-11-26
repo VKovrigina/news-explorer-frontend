@@ -110,7 +110,6 @@
   width: 100%;
   min-width: 164px;
   max-width: 460px;
-  background: rgba(47, 113, 229, 1);
   min-height: 60px;
   border-radius: 100px;
   border: none;
@@ -121,8 +120,6 @@
   line-height: 24px;
   letter-spacing: 0px;
   text-align: center;
-  color: rgb(255, 255, 255);
-  cursor: pointer;
 }
 
 .search-form__submit-button_inactive {
@@ -130,15 +127,21 @@
   color: rgb(187, 209, 248);
 }
 
-.search-form__submit-button:hover {
-  background: rgb(187, 207, 241);
+.search-form__submit-button_active {
+  background: rgba(47, 113, 229, 1);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
 }
 
-.search-form__submit-button:active {
+.search-form__submit-button_active:hover {
+  background: rgba(52,126,255,1);
+}
+
+.search-form__submit-button_active:active {
   background: rgba(42, 101, 204, 1);
 }
 
-.search-form__submit-button:visited {
+.search-form__submit-button_active:visited {
   background: rgba(47, 113, 229, 1);
 }
 

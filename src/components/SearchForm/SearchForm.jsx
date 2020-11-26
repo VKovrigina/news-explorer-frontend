@@ -31,7 +31,7 @@ function SearchForm() {
             value={values.article || ''}
             onChange={handleChange}
           />
-          <button className={`search-form__submit-button ${!isValid ? 'search-form__submit-button_inactive' : ''}`} type="submit" disabled={!isValid}>Искать</button>
+          <button className={`search-form__submit-button ${!isValid ? 'search-form__submit-button_inactive' : 'search-form__submit-button_active'}`} type="submit" disabled={!isValid}>Искать</button>
         </form>
       </div>
     </section>
