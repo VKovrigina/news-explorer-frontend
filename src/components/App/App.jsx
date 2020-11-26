@@ -21,7 +21,7 @@ function App() {
   const [isUserRegisteredPopupOpen, setIsUserRegisteredPopupOpen] = React.useState(false);
   const [isMenuMobileOpen, setIsMenuMobileOpen] = React.useState(false);
   const [isButtonMenuActive, setIsButtonMenuActive] = React.useState(false);
-  const [requestedArticles, setRequestedArticles] = React.useState({});
+  const [requestedArticles, setRequestedArticles] = React.useState([]);
   function handleLoginPopupOpen() {
     setIsLoginPopupOpen(true);
   }
