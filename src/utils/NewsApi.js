@@ -1,6 +1,8 @@
-import { newsApiOptions } from './constants';
+import newsApiOptions from './constants';
 
 const { API_KEY } = process.env;
+// eslint-disable-next-line no-console
+console.log(API_KEY);
 
 class NewsApi {
   constructor(options) {
@@ -8,18 +10,16 @@ class NewsApi {
     this._getCurrentDate = options.getCurrentDate;
   }
 
-  static _handleResponse(res) {
+  // eslint-disable-next-line class-methods-use-this
+  _handleResponse(res) {
     if (res.ok) {
       return res.json();
     }
     return Promise.reject(res.json());
   }
 
-  getArticles({ value }) {
-    return fetch(`https://newsapi.org/v2/everything?q=${value}e&from=${this._getSevenDaysAgoDate()}&to=${this._getCurrentDate()}&sortBy=popularity&pageSize=100&apiKey=${API_KEY}`,
-      {
-        method: 'GET',
-      })
+  getArticles() {
+    return fetch(`https://newsapi.org/v2/everything?q=еда&from=${this._getSevenDaysAgoDate()}&to=${this._getCurrentDate()}&sortBy=popularity&country=ru&pageSize=100&apiKey=e7f9ea0f4c6648ad9d59c29246d45eef`)
       .then(this._handleResponse);
   }
 }

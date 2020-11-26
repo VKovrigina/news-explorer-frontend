@@ -5,11 +5,12 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
-import { dataMain, dataSave } from '../../utils/data';
+import { dataSave } from '../../utils/data';
 import LoginPopup from '../LoginPopup/LoginPopup';
 import RegisterPopup from '../RegisterPopup/RegisterPopup';
 import UserRegisteredMessagePopup from '../UserRegisteredMessagePopup/UserRegisteredMessagePopup';
 import MobileMenu from '../MobileMenu/MobileMenu';
+import newsApi from '../../utils/NewsApi';
 
 function App() {
   const location = useLocation();
@@ -20,6 +21,7 @@ function App() {
   const [isUserRegisteredPopupOpen, setIsUserRegisteredPopupOpen] = React.useState(false);
   const [isMenuMobileOpen, setIsMenuMobileOpen] = React.useState(false);
   const [isButtonMenuActive, setIsButtonMenuActive] = React.useState(false);
+  const [requestedArticles, setRequestedArticles] = React.useState({});
   function handleLoginPopupOpen() {
     setIsLoginPopupOpen(true);
   }
@@ -73,6 +75,15 @@ function App() {
     }
     return isHidden;
   }
+  function handleSearchFormSubmit(value) {
+    newsApi.getArticles(value).then((articles) => {
+      setRequestedArticles(articles);
+    })
+      // eslint-disable-next-line no-console
+      .catch((err) => console.error(`При запросе статей произошла ошибка: ${err}`));
+
+    closeAllPopups();
+  }
   return (
     <div className="app">
       <Header
@@ -91,7 +102,11 @@ function App() {
           <SavedNews cards={dataSave} isLoggedIn={isUserLoggedIn} />
         </Route>
         <Route path="/">
-          <Main cards={dataMain} isLoggedIn={isUserLoggedIn} />
+          <Main
+            cards={requestedArticles}
+            isLoggedIn={isUserLoggedIn}
+            handleSearchFormSubmit={handleSearchFormSubmit}
+          />
         </Route>
 
       </Switch>

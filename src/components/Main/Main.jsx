@@ -5,10 +5,10 @@ import SearchForm from '../SearchForm/SearchForm';
 import NewsCardList from '../NewsCardList/NewsCardList';
 import About from '../About/About';
 
-function Main({ cards, isLoggedIn }) {
+function Main({ cards, isLoggedIn, handleSearchFormSubmit }) {
   return (
     <>
-      <SearchForm />
+      <SearchForm onSubmit={handleSearchFormSubmit} />
       <NewsCardList isMainPage cards={cards} isLoggedIn={isLoggedIn} />
       <About />
     </>
@@ -19,6 +19,7 @@ Main.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   cards: PropTypes.array.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
+  handleSearchFormSubmit: PropTypes.func.isRequired,
 };
 
 export default Main;

@@ -16,7 +16,7 @@ function NewsCardList({ isMainPage, cards, isLoggedIn }) {
             <NewsCard
               isLoggedIn={isLoggedIn}
               isMainPage={isMainPage}
-              key={card._id}
+              key={card.description}
               {...card}
             />
           ))}
