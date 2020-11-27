@@ -16,12 +16,16 @@ function App() {
   const location = useLocation();
   // eslint-disable-next-line no-unused-vars
   const [isUserLoggedIn, setUserLoggedIn] = React.useState(false);
+  /** попапы  */
   const [isLoginPopupOpen, setIsLoginPopupOpen] = React.useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = React.useState(false);
   const [isUserRegisteredPopupOpen, setIsUserRegisteredPopupOpen] = React.useState(false);
+  /** мобильное меню  */
   const [isMenuMobileOpen, setIsMenuMobileOpen] = React.useState(false);
   const [isButtonMenuActive, setIsButtonMenuActive] = React.useState(false);
+  /** статьи  */
   const [requestedArticles, setRequestedArticles] = React.useState([]);
+  /** попапы  */
   function handleLoginPopupOpen() {
     setIsLoginPopupOpen(true);
   }
@@ -60,6 +64,7 @@ function App() {
       document.removeEventListener('click', closeByOverlay);
     };
   }
+  /** мобильное меню  */
   function handleMenuMobile() {
     setIsMenuMobileOpen(!isMenuMobileOpen);
   }
@@ -75,6 +80,7 @@ function App() {
     }
     return isHidden;
   }
+  /** сабмит для формы поиска новостей  */
   function handleSearchFormSubmit(value) {
     newsApi.getArticles(value).then((articles) => {
       setRequestedArticles(articles);
