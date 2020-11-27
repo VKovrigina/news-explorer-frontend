@@ -5,11 +5,13 @@ import SearchForm from '../SearchForm/SearchForm';
 import NewsCardList from '../NewsCardList/NewsCardList';
 import About from '../About/About';
 
-function Main({ cards, isLoggedIn, handleSearchFormSubmit }) {
+function Main({
+  cards, isLoggedIn, handleSearchFormSubmit, isNewsCardListVisible,
+}) {
   return (
     <>
       <SearchForm onSubmit={handleSearchFormSubmit} />
-      <NewsCardList isMainPage cards={cards} isLoggedIn={isLoggedIn} />
+      { isNewsCardListVisible && <NewsCardList isMainPage cards={cards} isLoggedIn={isLoggedIn} />}
       <About />
     </>
   );
@@ -20,6 +22,7 @@ Main.propTypes = {
   cards: PropTypes.array.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   handleSearchFormSubmit: PropTypes.func.isRequired,
+  isNewsCardListVisible: PropTypes.bool.isRequired,
 };
 
 export default Main;

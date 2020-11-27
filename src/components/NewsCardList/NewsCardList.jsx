@@ -6,7 +6,9 @@ import NotFound from '../NotFound/NotFound';
 import NewsCard from '../NewsCard/NewsCard';
 // import Preloader from '../Preloader/Preloader';
 
-function NewsCardList({ isMainPage, cards, isLoggedIn }) {
+function NewsCardList({
+  isMainPage, cards, isLoggedIn,
+}) {
   return (
     <section className="news-card-list">
       <div className="news-card-list__container">

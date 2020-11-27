@@ -25,6 +25,7 @@ function App() {
   const [isButtonMenuActive, setIsButtonMenuActive] = React.useState(false);
   /** статьи  */
   const [requestedArticles, setRequestedArticles] = React.useState([]);
+  const [isNewsCardListVisible, setIsNewsCardListVisible] = React.useState(false);
   /** попапы  */
   function handleLoginPopupOpen() {
     setIsLoginPopupOpen(true);
@@ -82,6 +83,7 @@ function App() {
   }
   /** сабмит для формы поиска новостей  */
   function handleSearchFormSubmit(value) {
+    setIsNewsCardListVisible(true);
     newsApi.getArticles(value).then((res) => {
       const articles = res.articles.map((item) => ({
         keyword: value,
@@ -119,6 +121,7 @@ function App() {
             cards={requestedArticles}
             isLoggedIn={isUserLoggedIn}
             handleSearchFormSubmit={handleSearchFormSubmit}
+            isNewsCardListVisible={isNewsCardListVisible}
           />
         </Route>
 
