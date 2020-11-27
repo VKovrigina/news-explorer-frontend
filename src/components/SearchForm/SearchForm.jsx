@@ -1,16 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './SearchForm.css';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 
-function SearchForm() {
+function SearchForm({ onSubmit }) {
   const {
     values, handleChange, errors, isValid, resetForm,
   } = useFormWithValidation();
   React.useEffect(() => {
     resetForm();
   }, [resetForm]);
-  // eslint-disable-next-line no-console
-  console.log(isValid);
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    onSubmit(values.article);
+  }
   return (
     <section className="search-form">
       <div className="search-form__container">
@@ -19,7 +23,7 @@ function SearchForm() {
           <p className="search-form__description">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
         </div>
         { errors.article && <span className="search-form__span-error">{errors.article}</span>}
-        <form className="search-form__form" noValidate>
+        <form className="search-form__form" onSubmit={handleSubmit} noValidate>
           <input
             className="search-form__input"
             placeholder="Природа"
@@ -37,5 +41,9 @@ function SearchForm() {
     </section>
   );
 }
+
+SearchForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default SearchForm;

@@ -1,6 +1,7 @@
 import React from 'react';
 import './NewsCardList.css';
 import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
 import NotFound from '../NotFound/NotFound';
 import NewsCard from '../NewsCard/NewsCard';
 // import Preloader from '../Preloader/Preloader';
@@ -16,7 +17,7 @@ function NewsCardList({ isMainPage, cards, isLoggedIn }) {
             <NewsCard
               isLoggedIn={isLoggedIn}
               isMainPage={isMainPage}
-              key={card.description}
+              key={uuidv4()}
               {...card}
             />
           ))}

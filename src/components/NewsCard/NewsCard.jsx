@@ -2,6 +2,7 @@ import React from 'react';
 import './NewsCard.css';
 import PropTypes from 'prop-types';
 import NewsCardButton from '../NewsCardButton/NewsCardButton';
+import img from '../../images/image_04.jpg';
 
 function NewsCard({
   isMainPage,
@@ -19,7 +20,7 @@ function NewsCard({
       <NewsCardButton isMainPage={isMainPage} isLoggedIn={isLoggedIn} />
       {!isMainPage && <div className="news-card__keyword">{keyword}</div>}
       <a className="news-card__link" target="_blank" rel="noreferrer" href={link}>
-        <img className="news-card__img" src={image} alt="Картинка к статье" />
+        <img className="news-card__img" src={image} alt="Картинка к статье" onError={(e) => { e.target.src = img; }} />
         <div className="news-card__description">
           <p className="news-card__date">{date}</p>
           <h3 className="news-card__title">{title}</h3>
@@ -38,7 +39,8 @@ NewsCard.propTypes = {
   date: PropTypes.string.isRequired,
   source: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  image: PropTypes.string,
   isMainPage: PropTypes.bool.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
 };

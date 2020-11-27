@@ -82,13 +82,20 @@ function App() {
   }
   /** сабмит для формы поиска новостей  */
   function handleSearchFormSubmit(value) {
-    newsApi.getArticles(value).then((articles) => {
+    newsApi.getArticles(value).then((res) => {
+      const articles = res.articles.map((item) => ({
+        keyword: value,
+        title: item.title,
+        text: item.description,
+        date: item.publishedAt,
+        source: item.source.name,
+        link: item.url,
+        image: item.urlToImage,
+      }));
       setRequestedArticles(articles);
     })
       // eslint-disable-next-line no-console
       .catch((err) => console.error(`При запросе статей произошла ошибка: ${err}`));
-
-    closeAllPopups();
   }
   return (
     <div className="app">
