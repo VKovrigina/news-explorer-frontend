@@ -4,15 +4,15 @@ import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import NotFound from '../NotFound/NotFound';
 import NewsCard from '../NewsCard/NewsCard';
-// import Preloader from '../Preloader/Preloader';
+import Preloader from '../Preloader/Preloader';
 
 function NewsCardList({
-  isMainPage, cards, isLoggedIn,
+  isMainPage, cards, isLoggedIn, isPreloaderVisible,
 }) {
   return (
     <section className="news-card-list">
       <div className="news-card-list__container">
-        {isMainPage && <h2 className="news-card-list__title">Результаты поиска</h2>}
+        {isMainPage && cards.length > 0 && !isPreloaderVisible && <h2 className="news-card-list__title">Результаты поиска</h2>}
         {cards.length > 0 && (
         <div className="news-card-list__card-container">
           {cards.map((card) => (
@@ -25,9 +25,9 @@ function NewsCardList({
           ))}
         </div>
         )}
-        {isMainPage && <button className="news-card-list__button" type="button">Показать еще</button>}
-        {/* <Preloader /> */}
-        {cards.length === 0 && <NotFound isMainPage={isMainPage} />}
+        {isMainPage && !isPreloaderVisible && cards.length !== 0 && <button className="news-card-list__button" type="button">Показать еще</button>}
+        {isPreloaderVisible && <Preloader /> }
+        {cards.length === 0 && !isPreloaderVisible && <NotFound isMainPage={isMainPage} />}
       </div>
     </section>
   );
@@ -38,6 +38,7 @@ NewsCardList.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   cards: PropTypes.array.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
+  isPreloaderVisible: PropTypes.bool.isRequired,
 };
 
 export default NewsCardList;

@@ -26,6 +26,7 @@ function App() {
   /** статьи  */
   const [requestedArticles, setRequestedArticles] = React.useState([]);
   const [isNewsCardListVisible, setIsNewsCardListVisible] = React.useState(false);
+  const [isPreloaderVisible, setIsPreloaderVisible] = React.useState(false);
   /** попапы  */
   function handleLoginPopupOpen() {
     setIsLoginPopupOpen(true);
@@ -84,6 +85,7 @@ function App() {
   /** сабмит для формы поиска новостей  */
   function handleSearchFormSubmit(value) {
     setIsNewsCardListVisible(true);
+    setIsPreloaderVisible(true);
     newsApi.getArticles(value).then((res) => {
       const articles = res.articles.map((item) => ({
         keyword: value,
@@ -97,7 +99,8 @@ function App() {
       setRequestedArticles(articles);
     })
       // eslint-disable-next-line no-console
-      .catch((err) => console.error(`При запросе статей произошла ошибка: ${err}`));
+      .catch((err) => console.error(`При запросе статей произошла ошибка: ${err}`))
+      .finally(() => setIsPreloaderVisible(false));
   }
   return (
     <div className="app">
@@ -122,6 +125,7 @@ function App() {
             isLoggedIn={isUserLoggedIn}
             handleSearchFormSubmit={handleSearchFormSubmit}
             isNewsCardListVisible={isNewsCardListVisible}
+            isPreloaderVisible={isPreloaderVisible}
           />
         </Route>
 
