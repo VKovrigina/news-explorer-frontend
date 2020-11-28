@@ -11,6 +11,7 @@ import RegisterPopup from '../RegisterPopup/RegisterPopup';
 import UserRegisteredMessagePopup from '../UserRegisteredMessagePopup/UserRegisteredMessagePopup';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import newsApi from '../../utils/NewsApi';
+import { monthNames } from '../../utils/constants';
 
 function App() {
   const location = useLocation();
@@ -82,6 +83,13 @@ function App() {
     }
     return isHidden;
   }
+  /** работа со статьями */
+  function changeDateFormat(date) {
+    const newDate = date.split('T')[0].split('-').reverse();
+    const newMonth = `${monthNames[Number(newDate[1]) - 1]},`;
+    newDate.splice(1, 1, newMonth);
+    return newDate.join(' ');
+  }
   /** сабмит для формы поиска новостей  */
   function handleSearchFormSubmit(value) {
     setIsNewsCardListVisible(true);
@@ -91,7 +99,7 @@ function App() {
         keyword: value,
         title: item.title,
         text: item.description,
-        date: item.publishedAt,
+        date: changeDateFormat(item.publishedAt),
         source: item.source.name,
         link: item.url,
         image: item.urlToImage,

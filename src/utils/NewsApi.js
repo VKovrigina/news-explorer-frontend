@@ -1,4 +1,4 @@
-import newsApiOptions from './constants';
+import { newsApiOptions } from './constants';
 
 class NewsApi {
   constructor(options) {
