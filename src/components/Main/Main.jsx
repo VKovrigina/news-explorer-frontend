@@ -6,7 +6,12 @@ import NewsCardList from '../NewsCardList/NewsCardList';
 import About from '../About/About';
 
 function Main({
-  cards, isLoggedIn, handleSearchFormSubmit, isNewsCardListVisible, isPreloaderVisible,
+  cards,
+  isLoggedIn,
+  handleSearchFormSubmit,
+  isNewsCardListVisible,
+  isPreloaderVisible,
+  handleShowMoreButton,
 }) {
   return (
     <>
@@ -19,6 +24,7 @@ function Main({
         cards={cards}
         isLoggedIn={isLoggedIn}
         isPreloaderVisible={isPreloaderVisible}
+        handleShowMoreButton={handleShowMoreButton}
       />
       )
 }
@@ -34,6 +40,7 @@ Main.propTypes = {
   handleSearchFormSubmit: PropTypes.func.isRequired,
   isNewsCardListVisible: PropTypes.bool.isRequired,
   isPreloaderVisible: PropTypes.bool.isRequired,
+  handleShowMoreButton: PropTypes.func.isRequired,
 };
 
 export default Main;

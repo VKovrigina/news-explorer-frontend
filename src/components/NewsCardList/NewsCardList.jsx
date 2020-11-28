@@ -6,7 +6,7 @@ import NewsCard from '../NewsCard/NewsCard';
 import Preloader from '../Preloader/Preloader';
 
 function NewsCardList({
-  isMainPage, cards, isLoggedIn, isPreloaderVisible,
+  isMainPage, cards, isLoggedIn, isPreloaderVisible, handleShowMoreButton,
 }) {
   return (
     <section className="news-card-list">
@@ -24,7 +24,12 @@ function NewsCardList({
           ))}
         </div>
         )}
-        {isMainPage && !isPreloaderVisible && cards.length !== 0 && <button className="news-card-list__button" type="button">Показать еще</button>}
+        {isMainPage && !isPreloaderVisible && cards.length !== 0
+          && (
+          <button className="news-card-list__button" type="button" onClick={handleShowMoreButton}>
+            Показать еще
+          </button>
+          )}
         {isPreloaderVisible && <Preloader /> }
         {cards.length === 0 && !isPreloaderVisible && <NotFound isMainPage={isMainPage} />}
       </div>
@@ -38,6 +43,7 @@ NewsCardList.propTypes = {
   cards: PropTypes.array.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   isPreloaderVisible: PropTypes.bool.isRequired,
+  handleShowMoreButton: PropTypes.func.isRequired,
 };
 
 export default NewsCardList;

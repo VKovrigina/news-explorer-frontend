@@ -25,7 +25,9 @@ function App() {
   const [isMenuMobileOpen, setIsMenuMobileOpen] = React.useState(false);
   const [isButtonMenuActive, setIsButtonMenuActive] = React.useState(false);
   /** статьи  */
-  const [requestedArticles, setRequestedArticles] = React.useState([]);
+  const [currentArticles, setCurrentArticles] = React.useState([]);
+  // eslint-disable-next-line no-unused-vars
+  const [additionalArticles, setAdditionalArticles] = React.useState([]);
   const [isNewsCardListVisible, setIsNewsCardListVisible] = React.useState(false);
   const [isPreloaderVisible, setIsPreloaderVisible] = React.useState(false);
   /** попапы  */
@@ -104,11 +106,21 @@ function App() {
         link: item.url,
         image: item.urlToImage,
       }));
-      setRequestedArticles(articles);
+      const firstArticles = articles.splice(0, 3);
+      setCurrentArticles(firstArticles);
+      setAdditionalArticles(articles);
     })
       // eslint-disable-next-line no-console
       .catch((err) => console.error(`При запросе статей произошла ошибка: ${err}`))
       .finally(() => setIsPreloaderVisible(false));
+  }
+  function handleShowMoreButton() {
+    if (additionalArticles.length > 0) {
+      setIsPreloaderVisible(true);
+      const moreArticles = additionalArticles.splice(0, 3);
+      setCurrentArticles([...currentArticles, ...moreArticles]);
+      setIsPreloaderVisible(false);
+    }
   }
   return (
     <div className="app">
@@ -129,11 +141,12 @@ function App() {
         </Route>
         <Route path="/">
           <Main
-            cards={requestedArticles}
+            cards={currentArticles}
             isLoggedIn={isUserLoggedIn}
             handleSearchFormSubmit={handleSearchFormSubmit}
             isNewsCardListVisible={isNewsCardListVisible}
             isPreloaderVisible={isPreloaderVisible}
+            handleShowMoreButton={handleShowMoreButton}
           />
         </Route>
 
