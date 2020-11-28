@@ -141,7 +141,7 @@ function App() {
         </Route>
         <Route path="/">
           <Main
-            cards={currentArticles}
+            articles={currentArticles}
             isLoggedIn={isUserLoggedIn}
             handleSearchFormSubmit={handleSearchFormSubmit}
             isNewsCardListVisible={isNewsCardListVisible}
