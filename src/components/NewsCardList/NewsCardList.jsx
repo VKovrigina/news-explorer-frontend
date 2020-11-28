@@ -11,7 +11,12 @@ function NewsCardList({
   return (
     <section className="news-card-list">
       <div className="news-card-list__container">
-        {isMainPage && cards.length > 0 && !isPreloaderVisible && <h2 className="news-card-list__title">Результаты поиска</h2>}
+        {isMainPage && cards.length > 0 && !isPreloaderVisible
+          && (
+          <h2 className="news-card-list__title">
+            Результаты поиска
+          </h2>
+          )}
         {cards.length > 0 && (
         <div className="news-card-list__card-container">
           {cards.map((card) => (
@@ -31,7 +36,8 @@ function NewsCardList({
           </button>
           )}
         {isPreloaderVisible && <Preloader /> }
-        {cards.length === 0 && !isPreloaderVisible && <NotFound isMainPage={isMainPage} />}
+        {cards.length === 0 && !isPreloaderVisible
+        && <NotFound isMainPage={isMainPage} />}
       </div>
     </section>
   );
