@@ -95,6 +95,7 @@ function App() {
   /** сабмит для формы поиска новостей  */
   function handleSearchFormSubmit(value) {
     setIsNewsCardListVisible(true);
+    localStorage.setItem('keyword', JSON.stringify(value));
     localStorage.setItem('isNewsCardListVisible', JSON.stringify(true));
     setIsPreloaderVisible(true);
     newsApi.getArticles(value)
@@ -122,8 +123,14 @@ function App() {
           localStorage.removeItem('additionalArticles');
         }
       })
-      // eslint-disable-next-line no-console
-      .catch((err) => console.error(`При запросе статей произошла ошибка: ${err}`))
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.error(`При запросе статей произошла ошибка: ${err}`);
+        localStorage.removeItem('additionalArticles');
+        localStorage.removeItem('currentArticles');
+        localStorage.removeItem('keyword');
+        localStorage.removeItem('isNewsCardListVisible');
+      })
       .finally(() => setIsPreloaderVisible(false));
   }
   function handleShowMoreButton() {

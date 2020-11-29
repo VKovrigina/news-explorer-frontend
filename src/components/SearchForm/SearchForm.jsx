@@ -26,7 +26,7 @@ function SearchForm({ onSubmit }) {
         <form className="search-form__form" onSubmit={handleSubmit} noValidate>
           <input
             className="search-form__input"
-            placeholder="Природа"
+            placeholder={JSON.parse(localStorage.getItem('keyword')) || 'Введите ключевое слово'}
             required
             name="article"
             type="text"
