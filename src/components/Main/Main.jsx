@@ -7,6 +7,7 @@ import About from '../About/About';
 
 function Main({
   articles,
+  additionalArticles,
   isLoggedIn,
   handleSearchFormSubmit,
   isNewsCardListVisible,
@@ -22,6 +23,7 @@ function Main({
       <NewsCardList
         isMainPage
         articles={articles}
+        additionalArticles={additionalArticles}
         isLoggedIn={isLoggedIn}
         isPreloaderVisible={isPreloaderVisible}
         handleShowMoreButton={handleShowMoreButton}
@@ -36,6 +38,8 @@ function Main({
 Main.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   articles: PropTypes.array.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  additionalArticles: PropTypes.array.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   handleSearchFormSubmit: PropTypes.func.isRequired,
   isNewsCardListVisible: PropTypes.bool.isRequired,

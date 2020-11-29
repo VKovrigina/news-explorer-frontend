@@ -6,7 +6,7 @@ import NewsCard from '../NewsCard/NewsCard';
 import Preloader from '../Preloader/Preloader';
 
 function NewsCardList({
-  isMainPage, articles, isLoggedIn, isPreloaderVisible, handleShowMoreButton,
+  isMainPage, articles, isLoggedIn, isPreloaderVisible, handleShowMoreButton, additionalArticles,
 }) {
   return (
     <section className="news-card-list">
@@ -29,7 +29,7 @@ function NewsCardList({
           ))}
         </div>
         )}
-        {isMainPage && !isPreloaderVisible && articles.length !== 0
+        {isMainPage && !isPreloaderVisible && additionalArticles.length !== 0
           && (
           <button className="news-card-list__button" type="button" onClick={handleShowMoreButton}>
             Показать еще
@@ -47,6 +47,8 @@ NewsCardList.propTypes = {
   isMainPage: PropTypes.bool.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   articles: PropTypes.array.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  additionalArticles: PropTypes.array.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   isPreloaderVisible: PropTypes.bool.isRequired,
   handleShowMoreButton: PropTypes.func.isRequired,

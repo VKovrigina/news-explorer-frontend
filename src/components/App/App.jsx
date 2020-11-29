@@ -142,6 +142,7 @@ function App() {
         <Route path="/">
           <Main
             articles={currentArticles}
+            additionalArticles={additionalArticles}
             isLoggedIn={isUserLoggedIn}
             handleSearchFormSubmit={handleSearchFormSubmit}
             isNewsCardListVisible={isNewsCardListVisible}
