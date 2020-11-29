@@ -25,10 +25,10 @@ function App() {
   const [isMenuMobileOpen, setIsMenuMobileOpen] = React.useState(false);
   const [isButtonMenuActive, setIsButtonMenuActive] = React.useState(false);
   /** статьи  */
-  const [currentArticles, setCurrentArticles] = React.useState([]);
+  const [currentArticles, setCurrentArticles] = React.useState(JSON.parse(localStorage.getItem('currentArticles')) || []);
   // eslint-disable-next-line no-unused-vars
-  const [additionalArticles, setAdditionalArticles] = React.useState([]);
-  const [isNewsCardListVisible, setIsNewsCardListVisible] = React.useState(false);
+  const [additionalArticles, setAdditionalArticles] = React.useState(JSON.parse(localStorage.getItem('additionalArticles')) || []);
+  const [isNewsCardListVisible, setIsNewsCardListVisible] = React.useState(JSON.parse(localStorage.getItem('isNewsCardListVisible')) || false);
   const [isPreloaderVisible, setIsPreloaderVisible] = React.useState(false);
   /** попапы  */
   function handleLoginPopupOpen() {
@@ -95,31 +95,45 @@ function App() {
   /** сабмит для формы поиска новостей  */
   function handleSearchFormSubmit(value) {
     setIsNewsCardListVisible(true);
+    localStorage.setItem('isNewsCardListVisible', JSON.stringify(true));
     setIsPreloaderVisible(true);
-    newsApi.getArticles(value).then((res) => {
-      const articles = res.articles.map((item) => ({
-        keyword: value,
-        title: item.title,
-        text: item.description,
-        date: changeDateFormat(item.publishedAt),
-        source: item.source.name,
-        link: item.url,
-        image: item.urlToImage,
-      }));
-      const firstArticles = articles.splice(0, 3);
-      setCurrentArticles(firstArticles);
-      setAdditionalArticles(articles);
-    })
+    newsApi.getArticles(value)
+      .then((res) => {
+        const articles = res.articles.map((item) => ({
+          keyword: value,
+          title: item.title,
+          text: item.description,
+          date: changeDateFormat(item.publishedAt),
+          source: item.source.name,
+          link: item.url,
+          image: item.urlToImage,
+        }));
+        const firstArticles = articles.splice(0, 3);
+        setCurrentArticles(firstArticles);
+        setAdditionalArticles(articles);
+        if (firstArticles.length > 0) {
+          localStorage.setItem('currentArticles', JSON.stringify(firstArticles));
+        } else {
+          localStorage.removeItem('currentArticles');
+        }
+        if (articles.length > 0) {
+          localStorage.setItem('additionalArticles', JSON.stringify(articles));
+        } else {
+          localStorage.removeItem('additionalArticles');
+        }
+      })
       // eslint-disable-next-line no-console
       .catch((err) => console.error(`При запросе статей произошла ошибка: ${err}`))
       .finally(() => setIsPreloaderVisible(false));
   }
   function handleShowMoreButton() {
     if (additionalArticles.length > 0) {
-      setIsPreloaderVisible(true);
       const moreArticles = additionalArticles.splice(0, 3);
       setCurrentArticles([...currentArticles, ...moreArticles]);
-      setIsPreloaderVisible(false);
+      localStorage.setItem('currentArticles', JSON.stringify([...currentArticles, ...moreArticles]));
+      localStorage.setItem('additionalArticles', JSON.stringify(additionalArticles));
+    } else {
+      localStorage.removeItem('additionalArticles');
     }
   }
   return (
