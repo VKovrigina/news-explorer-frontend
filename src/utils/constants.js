@@ -12,8 +12,15 @@ const newsApiOptions = {
   },
 };
 
+const mainApiOptions = {
+  baseUrl: 'http://localhost:3001',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+};
+
 const monthNames = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
   'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря',
 ];
 
-export { newsApiOptions, monthNames };
+export { newsApiOptions, monthNames, mainApiOptions };
