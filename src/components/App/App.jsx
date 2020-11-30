@@ -21,6 +21,10 @@ function App() {
   const [isLoginPopupOpen, setIsLoginPopupOpen] = React.useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = React.useState(false);
   const [isUserRegisteredPopupOpen, setIsUserRegisteredPopupOpen] = React.useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [registerErrorMessage, setRegisterErrorMessage] = React.useState('');
+  // eslint-disable-next-line no-unused-vars
+  const [loginErrorMessage, setLoginErrorMessage] = React.useState('');
   /** мобильное меню  */
   const [isMenuMobileOpen, setIsMenuMobileOpen] = React.useState(false);
   const [isButtonMenuActive, setIsButtonMenuActive] = React.useState(false);
@@ -179,12 +183,14 @@ function App() {
         closeByEscAndOverlay={closePopupByEscAndOverlay}
         onClose={() => setIsLoginPopupOpen(false)}
         openRegisterPopup={handleRegisterPopupOpen}
+        loginErrorMessage={loginErrorMessage}
       />
       <RegisterPopup
         isOpen={isRegisterPopupOpen}
         closeByEscAndOverlay={closePopupByEscAndOverlay}
         onClose={() => setIsRegisterPopupOpen(false)}
         openLoginPopup={handleLoginPopupOpen}
+        registerErrorMessage={registerErrorMessage}
       />
       <UserRegisteredMessagePopup
         isOpen={isUserRegisteredPopupOpen}

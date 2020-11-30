@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 import './PopupWithForm.css';
@@ -12,6 +13,8 @@ function PopupWithForm({
   linkText,
   openOtherPopup,
   isMessagePopup,
+  isButtonValid,
+  errorMessage,
 }) {
   React.useEffect(() => {
     closeByEscAndOverlay();
@@ -33,8 +36,8 @@ function PopupWithForm({
             ? (
               <>
                 {children}
-                <span className="popup__span-error popup__span-error_position_center">Такой пользователь уже существует</span>
-                <button className="popup__form-button" type="submit">{buttonText}</button>
+                <span className="popup__span-error popup__span-error_position_center">{errorMessage}</span>
+                <button className={`popup__form-button ${!isButtonValid ? 'popup__form-button_disable' : 'popup__form-button_active'}`} type="submit" disabled={!isButtonValid}>{buttonText}</button>
                 <p className="popup__form-paragraph">
                   или&nbsp;
                   <button className="popup__form-link popup__form-link_type_s" type="button" onClick={() => openOtherPopup()}>{linkText}</button>
@@ -50,7 +53,6 @@ function PopupWithForm({
 
 PopupWithForm.propTypes = {
   title: PropTypes.string.isRequired,
-  // eslint-disable-next-line react/require-default-props
   children: PropTypes.node,
   onClose: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
@@ -59,6 +61,8 @@ PopupWithForm.propTypes = {
   buttonText: PropTypes.string.isRequired,
   linkText: PropTypes.string.isRequired,
   openOtherPopup: PropTypes.func.isRequired,
+  isButtonValid: PropTypes.bool,
+  errorMessage: PropTypes.string,
 };
 
 export default PopupWithForm;
