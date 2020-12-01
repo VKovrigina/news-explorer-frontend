@@ -11,6 +11,7 @@ import RegisterPopup from '../RegisterPopup/RegisterPopup';
 import UserRegisteredMessagePopup from '../UserRegisteredMessagePopup/UserRegisteredMessagePopup';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import newsApi from '../../utils/NewsApi';
+import mainApi from '../../utils/MainApi';
 import { monthNames } from '../../utils/constants';
 
 function App() {
@@ -147,6 +148,21 @@ function App() {
       localStorage.removeItem('additionalArticles');
     }
   }
+  /* работа с пользователем * */
+  function handleRegistration(userName, userEmail, userPassword) {
+    mainApi.register(userName, userEmail, userPassword)
+      .then((res) => {
+        if (res.statusCode !== 400) {
+          setRegisterErrorMessage('');
+          setIsRegisterPopupOpen(false);
+          setIsUserRegisteredPopupOpen(true);
+        }
+      })
+      .catch((err) => {
+        // eslint-disable-next-line no-console
+        console.log(err);
+      });
+  }
   return (
     <div className="app">
       <Header
@@ -191,6 +207,7 @@ function App() {
         onClose={() => setIsRegisterPopupOpen(false)}
         openLoginPopup={handleLoginPopupOpen}
         registerErrorMessage={registerErrorMessage}
+        onSubmit={handleRegistration}
       />
       <UserRegisteredMessagePopup
         isOpen={isUserRegisteredPopupOpen}

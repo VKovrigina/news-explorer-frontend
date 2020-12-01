@@ -15,6 +15,7 @@ function PopupWithForm({
   isMessagePopup,
   isButtonValid,
   errorMessage,
+  onSubmit,
 }) {
   React.useEffect(() => {
     closeByEscAndOverlay();
@@ -30,7 +31,7 @@ function PopupWithForm({
           role="button"
           aria-hidden="true"
         />
-        <form className="popup__form" method="get" action="#">
+        <form className="popup__form" method="get" action="#" onSubmit={onSubmit}>
           <h2 className="popup__form-title">{title}</h2>
           {!isMessagePopup
             ? (
@@ -63,6 +64,7 @@ PopupWithForm.propTypes = {
   openOtherPopup: PropTypes.func.isRequired,
   isButtonValid: PropTypes.bool,
   errorMessage: PropTypes.string,
+  onSubmit: PropTypes.func,
 };
 
 export default PopupWithForm;

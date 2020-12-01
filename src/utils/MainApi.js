@@ -19,7 +19,6 @@ class MainApi {
       {
         method: 'POST',
         headers: this._headers,
-        credentials: 'include',
         body: JSON.stringify({
           name: userName,
           email: userEmail,
@@ -34,7 +33,6 @@ class MainApi {
       {
         method: 'POST',
         headers: this._headers,
-        credentials: 'include',
         body: JSON.stringify({
           email: userEmail,
           password: userPassword,
