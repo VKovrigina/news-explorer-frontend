@@ -1,5 +1,7 @@
 import React from 'react';
-import { Route, Switch, useLocation } from 'react-router-dom';
+import {
+  Route, Switch, useLocation,
+} from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -178,9 +180,9 @@ function App() {
       />
       <Switch>
         <Route path="/saved-news">
-          <SavedNews cards={dataSave} isLoggedIn={isUserLoggedIn} />
+          <SavedNews articles={dataSave} isLoggedIn={isUserLoggedIn} />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <Main
             articles={currentArticles}
             additionalArticles={additionalArticles}
