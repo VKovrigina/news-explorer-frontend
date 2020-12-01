@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Route, Switch, useLocation,
+  Route, Switch, useLocation, Redirect,
 } from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
@@ -19,7 +19,7 @@ import { monthNames } from '../../utils/constants';
 function App() {
   const location = useLocation();
   // eslint-disable-next-line no-unused-vars
-  const [isUserLoggedIn, setUserLoggedIn] = React.useState(false);
+  const [isUserLoggedIn, setUserLoggedIn] = React.useState(true);
   /** попапы  */
   const [isLoginPopupOpen, setIsLoginPopupOpen] = React.useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = React.useState(false);
@@ -35,6 +35,8 @@ function App() {
   const [currentArticles, setCurrentArticles] = React.useState(JSON.parse(localStorage.getItem('currentArticles')) || []);
   // eslint-disable-next-line no-unused-vars
   const [additionalArticles, setAdditionalArticles] = React.useState(JSON.parse(localStorage.getItem('additionalArticles')) || []);
+  // eslint-disable-next-line no-unused-vars
+  const [savedArticles, setSavedArticles] = React.useState(dataSave || []);
   const [isNewsCardListVisible, setIsNewsCardListVisible] = React.useState(JSON.parse(localStorage.getItem('isNewsCardListVisible')) || false);
   const [isPreloaderVisible, setIsPreloaderVisible] = React.useState(false);
   /** попапы  */
@@ -179,9 +181,6 @@ function App() {
         closeMenu={closeAllPopups}
       />
       <Switch>
-        <Route path="/saved-news">
-          <SavedNews articles={dataSave} isLoggedIn={isUserLoggedIn} />
-        </Route>
         <Route exact path="/">
           <Main
             articles={currentArticles}
@@ -192,6 +191,12 @@ function App() {
             isPreloaderVisible={isPreloaderVisible}
             handleShowMoreButton={handleShowMoreButton}
           />
+        </Route>
+        <Route path="/saved-news">
+          <SavedNews articles={savedArticles} isLoggedIn={isUserLoggedIn} />
+        </Route>
+        <Route>
+          <Redirect to="/" />
         </Route>
 
       </Switch>

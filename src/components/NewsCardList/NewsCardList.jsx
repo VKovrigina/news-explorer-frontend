@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import './NewsCardList.css';
 import PropTypes from 'prop-types';
@@ -48,10 +49,10 @@ NewsCardList.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   articles: PropTypes.array.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  additionalArticles: PropTypes.array.isRequired,
+  additionalArticles: PropTypes.array,
   isLoggedIn: PropTypes.bool.isRequired,
-  isPreloaderVisible: PropTypes.bool.isRequired,
-  handleShowMoreButton: PropTypes.func.isRequired,
+  isPreloaderVisible: PropTypes.bool,
+  handleShowMoreButton: PropTypes.func,
 };
 
 export default NewsCardList;
