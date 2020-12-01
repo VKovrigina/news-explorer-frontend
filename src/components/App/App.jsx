@@ -12,6 +12,7 @@ import LoginPopup from '../LoginPopup/LoginPopup';
 import RegisterPopup from '../RegisterPopup/RegisterPopup';
 import UserRegisteredMessagePopup from '../UserRegisteredMessagePopup/UserRegisteredMessagePopup';
 import MobileMenu from '../MobileMenu/MobileMenu';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import newsApi from '../../utils/NewsApi';
 import mainApi from '../../utils/MainApi';
 import { monthNames } from '../../utils/constants';
@@ -19,7 +20,7 @@ import { monthNames } from '../../utils/constants';
 function App() {
   const location = useLocation();
   // eslint-disable-next-line no-unused-vars
-  const [isUserLoggedIn, setUserLoggedIn] = React.useState(true);
+  const [isUserLoggedIn, setUserLoggedIn] = React.useState(false);
   /** попапы  */
   const [isLoginPopupOpen, setIsLoginPopupOpen] = React.useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = React.useState(false);
@@ -192,9 +193,12 @@ function App() {
             handleShowMoreButton={handleShowMoreButton}
           />
         </Route>
-        <Route path="/saved-news">
-          <SavedNews articles={savedArticles} isLoggedIn={isUserLoggedIn} />
-        </Route>
+        <ProtectedRoute
+          path="/saved-news"
+          component={SavedNews}
+          isUserLoggedIn={isUserLoggedIn}
+          articles={savedArticles}
+        />
         <Route>
           <Redirect to="/" />
         </Route>
