@@ -20,6 +20,9 @@ function PopupWithForm({
   React.useEffect(() => {
     closeByEscAndOverlay();
   });
+  function handleClick() {
+    openOtherPopup();
+  }
 
   return (
     <div className={`popup ${isOpen ? 'popup_open' : ''}`}>
@@ -41,11 +44,11 @@ function PopupWithForm({
                 <button className={`popup__form-button ${!isButtonValid ? 'popup__form-button_disable' : 'popup__form-button_active'}`} type="submit" disabled={!isButtonValid}>{buttonText}</button>
                 <p className="popup__form-paragraph">
                   или&nbsp;
-                  <button className="popup__form-link popup__form-link_type_s" type="button" onClick={() => openOtherPopup()}>{linkText}</button>
+                  <button className="popup__form-link popup__form-link_type_s" type="button" onClick={handleClick}>{linkText}</button>
                 </p>
               </>
             )
-            : <button className="popup__form-link popup__form-link_type_m" type="button" onClick={() => openOtherPopup()}>{linkText}</button>}
+            : <button className="popup__form-link popup__form-link_type_m" type="button" onClick={handleClick}>{linkText}</button>}
         </form>
       </div>
     </div>
