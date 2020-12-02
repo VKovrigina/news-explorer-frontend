@@ -12,7 +12,7 @@ function RegisterPopup({
   } = useFormWithValidation();
   React.useEffect(() => {
     resetForm();
-  }, [onClose, resetForm, isOpen]);
+  }, [onClose, isOpen]);
   function openOtherPopup() {
     onClose();
     openLoginPopup();
@@ -69,7 +69,7 @@ function RegisterPopup({
         Имя
       </label>
       <input
-        type="password"
+        type="text"
         id="register-name"
         className="popup__form-input"
         placeholder="Введите свое имя"

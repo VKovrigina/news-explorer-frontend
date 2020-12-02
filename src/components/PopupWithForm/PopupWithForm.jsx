@@ -34,7 +34,7 @@ function PopupWithForm({
           role="button"
           aria-hidden="true"
         />
-        <form className="popup__form" method="get" action="#" onSubmit={onSubmit}>
+        <form className="popup__form" method="get" action="#" onSubmit={onSubmit} noValidate>
           <h2 className="popup__form-title">{title}</h2>
           {!isMessagePopup
             ? (

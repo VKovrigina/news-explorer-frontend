@@ -47,6 +47,7 @@ function App() {
   }
   function handleRegisterPopupOpen() {
     setIsRegisterPopupOpen(true);
+    setRegisterErrorMessage('');
   }
   function closeAllPopups() {
     setIsLoginPopupOpen(false);
@@ -165,8 +166,9 @@ function App() {
         }
       })
       .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.log(err);
+        err.then((res) => {
+          setRegisterErrorMessage(res.message);
+        });
       });
   }
   return (

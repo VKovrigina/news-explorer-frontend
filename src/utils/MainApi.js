@@ -8,7 +8,7 @@ class MainApi {
 
   // eslint-disable-next-line class-methods-use-this
   _handleResponse(res) {
-    if (res.ok) {
+    if (res.status === 200) {
       return res.json();
     }
     return Promise.reject(res.json());
