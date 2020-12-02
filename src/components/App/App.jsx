@@ -58,8 +58,6 @@ function App() {
     setIsLoginPopupOpen(false);
     setIsUserRegisteredPopupOpen(false);
     setIsRegisterPopupOpen(false);
-    setIsMenuMobileOpen(false);
-    setIsButtonMenuActive(false);
   }
   function closePopupByEscAndOverlay() {
     function handleEscClose(e) {
@@ -83,6 +81,10 @@ function App() {
     };
   }
   /** мобильное меню  */
+  function handleCloseMenu() {
+    setIsMenuMobileOpen(false);
+    setIsButtonMenuActive(false);
+  }
   function handleMenuMobile() {
     setIsMenuMobileOpen(!isMenuMobileOpen);
   }
@@ -91,7 +93,7 @@ function App() {
   }
   function isHiddenHeaderButton() {
     let isHidden;
-    if (isRegisterPopupOpen || isLoginPopupOpen) {
+    if (isRegisterPopupOpen || isLoginPopupOpen || isUserRegisteredPopupOpen) {
       isHidden = true;
     } else {
       isHidden = false;
@@ -214,14 +216,14 @@ function App() {
         <LoginPopup
           isOpen={isLoginPopupOpen}
           closeByEscAndOverlay={closePopupByEscAndOverlay}
-          onClose={() => setIsLoginPopupOpen(false)}
+          onClose={closeAllPopups}
           openRegisterPopup={handleRegisterPopupOpen}
           loginErrorMessage={loginErrorMessage}
         />
         <RegisterPopup
           isOpen={isRegisterPopupOpen}
           closeByEscAndOverlay={closePopupByEscAndOverlay}
-          onClose={() => setIsRegisterPopupOpen(false)}
+          onClose={closeAllPopups}
           openLoginPopup={handleLoginPopupOpen}
           registerErrorMessage={registerErrorMessage}
           onSubmit={handleRegistration}
@@ -229,7 +231,7 @@ function App() {
         <UserRegisteredMessagePopup
           isOpen={isUserRegisteredPopupOpen}
           closeByEscAndOverlay={closePopupByEscAndOverlay}
-          onClose={() => setIsUserRegisteredPopupOpen(false)}
+          onClose={closeAllPopups}
           openLoginPopup={handleLoginPopupOpen}
         />
         <MobileMenu
@@ -242,7 +244,7 @@ function App() {
           handleButtonMenu={handleMenuButtonMobile}
           closeByEscAndOverlay={closePopupByEscAndOverlay}
           isHiddenHeaderButton={isHiddenHeaderButton()}
-          closeMenu={closeAllPopups}
+          closeMenu={handleCloseMenu}
         />
       </CurrentUserContext.Provider>
     </div>
