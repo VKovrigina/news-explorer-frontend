@@ -16,11 +16,14 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import newsApi from '../../utils/NewsApi';
 import mainApi from '../../utils/MainApi';
 import { monthNames } from '../../utils/constants';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 function App() {
   const location = useLocation();
   // eslint-disable-next-line no-unused-vars
   const [isUserLoggedIn, setUserLoggedIn] = React.useState(false);
+  // eslint-disable-next-line no-unused-vars
+  const [currentUser, setCurrentUser] = React.useState({});
   /** попапы  */
   const [isLoginPopupOpen, setIsLoginPopupOpen] = React.useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = React.useState(false);
@@ -170,74 +173,76 @@ function App() {
   }
   return (
     <div className="app">
-      <Header
-        pathname={location.pathname}
-        isLoggedIn={isUserLoggedIn}
-        openLoginPopup={handleLoginPopupOpen}
-        isMenu={false}
-        handleMenu={handleMenuMobile}
-        isButtonActive={isButtonMenuActive}
-        handleButtonMenu={handleMenuButtonMobile}
-        isHiddenHeaderButton={isHiddenHeaderButton()}
-        closeMenu={closeAllPopups}
-      />
-      <Switch>
-        <Route exact path="/">
-          <Main
-            articles={currentArticles}
-            additionalArticles={additionalArticles}
-            isLoggedIn={isUserLoggedIn}
-            handleSearchFormSubmit={handleSearchFormSubmit}
-            isNewsCardListVisible={isNewsCardListVisible}
-            isPreloaderVisible={isPreloaderVisible}
-            handleShowMoreButton={handleShowMoreButton}
-          />
-        </Route>
-        <ProtectedRoute
-          path="/saved-news"
-          component={SavedNews}
-          isUserLoggedIn={isUserLoggedIn}
-          articles={savedArticles}
+      <CurrentUserContext.Provider value={currentUser}>
+        <Header
+          pathname={location.pathname}
+          isLoggedIn={isUserLoggedIn}
+          openLoginPopup={handleLoginPopupOpen}
+          isMenu={false}
+          handleMenu={handleMenuMobile}
+          isButtonActive={isButtonMenuActive}
+          handleButtonMenu={handleMenuButtonMobile}
+          isHiddenHeaderButton={isHiddenHeaderButton()}
+          closeMenu={closeAllPopups}
         />
-        <Route>
-          <Redirect to="/" />
-        </Route>
+        <Switch>
+          <Route exact path="/">
+            <Main
+              articles={currentArticles}
+              additionalArticles={additionalArticles}
+              isLoggedIn={isUserLoggedIn}
+              handleSearchFormSubmit={handleSearchFormSubmit}
+              isNewsCardListVisible={isNewsCardListVisible}
+              isPreloaderVisible={isPreloaderVisible}
+              handleShowMoreButton={handleShowMoreButton}
+            />
+          </Route>
+          <ProtectedRoute
+            path="/saved-news"
+            component={SavedNews}
+            isUserLoggedIn={isUserLoggedIn}
+            articles={savedArticles}
+          />
+          <Route>
+            <Redirect to="/" />
+          </Route>
 
-      </Switch>
-      <Footer />
-      <LoginPopup
-        isOpen={isLoginPopupOpen}
-        closeByEscAndOverlay={closePopupByEscAndOverlay}
-        onClose={() => setIsLoginPopupOpen(false)}
-        openRegisterPopup={handleRegisterPopupOpen}
-        loginErrorMessage={loginErrorMessage}
-      />
-      <RegisterPopup
-        isOpen={isRegisterPopupOpen}
-        closeByEscAndOverlay={closePopupByEscAndOverlay}
-        onClose={() => setIsRegisterPopupOpen(false)}
-        openLoginPopup={handleLoginPopupOpen}
-        registerErrorMessage={registerErrorMessage}
-        onSubmit={handleRegistration}
-      />
-      <UserRegisteredMessagePopup
-        isOpen={isUserRegisteredPopupOpen}
-        closeByEscAndOverlay={closePopupByEscAndOverlay}
-        onClose={() => setIsUserRegisteredPopupOpen(false)}
-        openLoginPopup={handleLoginPopupOpen}
-      />
-      <MobileMenu
-        isOpen={isMenuMobileOpen}
-        pathname={location.pathname}
-        isLoggedIn={isUserLoggedIn}
-        openLoginPopup={handleLoginPopupOpen}
-        handleMenu={handleMenuMobile}
-        isButtonActive={isButtonMenuActive}
-        handleButtonMenu={handleMenuButtonMobile}
-        closeByEscAndOverlay={closePopupByEscAndOverlay}
-        isHiddenHeaderButton={isHiddenHeaderButton()}
-        closeMenu={closeAllPopups}
-      />
+        </Switch>
+        <Footer />
+        <LoginPopup
+          isOpen={isLoginPopupOpen}
+          closeByEscAndOverlay={closePopupByEscAndOverlay}
+          onClose={() => setIsLoginPopupOpen(false)}
+          openRegisterPopup={handleRegisterPopupOpen}
+          loginErrorMessage={loginErrorMessage}
+        />
+        <RegisterPopup
+          isOpen={isRegisterPopupOpen}
+          closeByEscAndOverlay={closePopupByEscAndOverlay}
+          onClose={() => setIsRegisterPopupOpen(false)}
+          openLoginPopup={handleLoginPopupOpen}
+          registerErrorMessage={registerErrorMessage}
+          onSubmit={handleRegistration}
+        />
+        <UserRegisteredMessagePopup
+          isOpen={isUserRegisteredPopupOpen}
+          closeByEscAndOverlay={closePopupByEscAndOverlay}
+          onClose={() => setIsUserRegisteredPopupOpen(false)}
+          openLoginPopup={handleLoginPopupOpen}
+        />
+        <MobileMenu
+          isOpen={isMenuMobileOpen}
+          pathname={location.pathname}
+          isLoggedIn={isUserLoggedIn}
+          openLoginPopup={handleLoginPopupOpen}
+          handleMenu={handleMenuMobile}
+          isButtonActive={isButtonMenuActive}
+          handleButtonMenu={handleMenuButtonMobile}
+          closeByEscAndOverlay={closePopupByEscAndOverlay}
+          isHiddenHeaderButton={isHiddenHeaderButton()}
+          closeMenu={closeAllPopups}
+        />
+      </CurrentUserContext.Provider>
     </div>
   );
 }
