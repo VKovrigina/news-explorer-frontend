@@ -28,7 +28,6 @@ function App() {
   const [isLoginPopupOpen, setIsLoginPopupOpen] = React.useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = React.useState(false);
   const [isUserRegisteredPopupOpen, setIsUserRegisteredPopupOpen] = React.useState(false);
-  // eslint-disable-next-line no-unused-vars
   const [registerErrorMessage, setRegisterErrorMessage] = React.useState('');
   // eslint-disable-next-line no-unused-vars
   const [loginErrorMessage, setLoginErrorMessage] = React.useState('');
@@ -37,7 +36,6 @@ function App() {
   const [isButtonMenuActive, setIsButtonMenuActive] = React.useState(false);
   /** статьи  */
   const [currentArticles, setCurrentArticles] = React.useState(JSON.parse(localStorage.getItem('currentArticles')) || []);
-  // eslint-disable-next-line no-unused-vars
   const [additionalArticles, setAdditionalArticles] = React.useState(JSON.parse(localStorage.getItem('additionalArticles')) || []);
   // eslint-disable-next-line no-unused-vars
   const [savedArticles, setSavedArticles] = React.useState(dataSave || []);
@@ -49,10 +47,6 @@ function App() {
   }
   function handleRegisterPopupOpen() {
     setIsRegisterPopupOpen(true);
-  }
-  // eslint-disable-next-line no-unused-vars
-  function handleUserRegisteredOpen() {
-    setIsUserRegisteredPopupOpen(true);
   }
   function closeAllPopups() {
     setIsLoginPopupOpen(false);
