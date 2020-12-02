@@ -41,6 +41,26 @@ function App() {
   const [savedArticles, setSavedArticles] = React.useState(dataSave || []);
   const [isNewsCardListVisible, setIsNewsCardListVisible] = React.useState(JSON.parse(localStorage.getItem('isNewsCardListVisible')) || false);
   const [isPreloaderVisible, setIsPreloaderVisible] = React.useState(false);
+  /** мобильное меню  */
+  function handleCloseMenu() {
+    setIsMenuMobileOpen(false);
+    setIsButtonMenuActive(false);
+  }
+  function handleMenuMobile() {
+    setIsMenuMobileOpen(!isMenuMobileOpen);
+  }
+  function handleMenuButtonMobile() {
+    setIsButtonMenuActive(!isButtonMenuActive);
+  }
+  function isHiddenHeaderButton() {
+    let isHidden;
+    if (isRegisterPopupOpen || isLoginPopupOpen || isUserRegisteredPopupOpen) {
+      isHidden = true;
+    } else {
+      isHidden = false;
+    }
+    return isHidden;
+  }
   /** попапы  */
   function handleLoginPopupOpen() {
     setIsLoginPopupOpen(true);
@@ -62,8 +82,11 @@ function App() {
     }
 
     function closeByOverlay(e) {
-      if (e.target.classList.contains('popup_open') || e.target.classList.contains('menu_open')) {
+      if (e.target.classList.contains('popup_open')) {
         closeAllPopups();
+      }
+      if (e.target.classList.contains('menu_open')) {
+        handleCloseMenu();
       }
     }
 
@@ -74,26 +97,6 @@ function App() {
       document.removeEventListener('keydown', handleEscClose);
       document.removeEventListener('click', closeByOverlay);
     };
-  }
-  /** мобильное меню  */
-  function handleCloseMenu() {
-    setIsMenuMobileOpen(false);
-    setIsButtonMenuActive(false);
-  }
-  function handleMenuMobile() {
-    setIsMenuMobileOpen(!isMenuMobileOpen);
-  }
-  function handleMenuButtonMobile() {
-    setIsButtonMenuActive(!isButtonMenuActive);
-  }
-  function isHiddenHeaderButton() {
-    let isHidden;
-    if (isRegisterPopupOpen || isLoginPopupOpen || isUserRegisteredPopupOpen) {
-      isHidden = true;
-    } else {
-      isHidden = false;
-    }
-    return isHidden;
   }
   /** работа со статьями */
   function changeDateFormat(date) {
