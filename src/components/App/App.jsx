@@ -110,6 +110,8 @@ function App() {
     setIsNewsCardListVisible(true);
     localStorage.setItem('keyword', JSON.stringify(value));
     localStorage.setItem('isNewsCardListVisible', JSON.stringify(true));
+    setCurrentArticles([]);
+    setAdditionalArticles([]);
     setIsPreloaderVisible(true);
     newsApi.getArticles(value)
       .then((res) => {
