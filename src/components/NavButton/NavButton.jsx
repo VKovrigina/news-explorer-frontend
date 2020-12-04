@@ -6,12 +6,14 @@ import ExitIconWhite from '../../images/Union-exit-white.svg';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 function NavButton({
-  isLoggedIn, pathname, openLoginPopup, isMenu,
+  isLoggedIn, pathname, openLoginPopup, isMenu, onExit,
 }) {
   const currentUser = React.useContext(CurrentUserContext);
   function onClickFunction() {
     if (!isLoggedIn) {
       openLoginPopup();
+    } else {
+      onExit();
     }
   }
   return (
@@ -33,6 +35,7 @@ NavButton.propTypes = {
   pathname: PropTypes.string.isRequired,
   openLoginPopup: PropTypes.func.isRequired,
   isMenu: PropTypes.bool.isRequired,
+  onExit: PropTypes.func.isRequired,
 };
 
 export default NavButton;

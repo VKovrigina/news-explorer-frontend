@@ -187,6 +187,22 @@ function App() {
         });
       });
   }
+  function handleExit() {
+    mainApi.logout()
+      .then(() => {
+        setUserLoggedIn(false);
+        localStorage.removeItem('additionalArticles');
+        localStorage.removeItem('currentArticles');
+        localStorage.removeItem('keyword');
+        localStorage.removeItem('isNewsCardListVisible');
+      })
+      .catch((err) => {
+        err.then((res) => {
+          // eslint-disable-next-line no-console
+          console.log(res.message);
+        });
+      });
+  }
   React.useEffect(() => {
     Promise.all([mainApi.getContent(), mainApi.getSavedArticles()])
       .then(([userInfo, articlesInfo]) => {
@@ -217,6 +233,7 @@ function App() {
           handleButtonMenu={handleMenuButtonMobile}
           isHiddenHeaderButton={isHiddenHeaderButton()}
           closeMenu={closeAllPopups}
+          onExit={handleExit}
         />
         <Switch>
           <Route exact path="/">
@@ -275,6 +292,7 @@ function App() {
           closeByEscAndOverlay={closePopupByEscAndOverlay}
           isHiddenHeaderButton={isHiddenHeaderButton()}
           closeMenu={handleCloseMenu}
+          onExit={handleExit}
         />
       </CurrentUserContext.Provider>
     </div>

@@ -5,7 +5,7 @@ import './Navigation.css';
 import NavButton from '../NavButton/NavButton';
 
 function Navigation({
-  isLoggedIn, pathname, openLoginPopup, isMenu, closeMenu,
+  isLoggedIn, pathname, openLoginPopup, isMenu, closeMenu, onExit,
 }) {
   function mainLinkClasses() {
     let classes = 'navigation__link';
@@ -62,6 +62,7 @@ function Navigation({
         pathname={pathname}
         openLoginPopup={openLoginPopup}
         isMenu={isMenu}
+        onExit={onExit}
       />
     </nav>
 
@@ -74,6 +75,7 @@ Navigation.propTypes = {
   openLoginPopup: PropTypes.func.isRequired,
   isMenu: PropTypes.bool.isRequired,
   closeMenu: PropTypes.func.isRequired,
+  onExit: PropTypes.func.isRequired,
 };
 
 export default Navigation;

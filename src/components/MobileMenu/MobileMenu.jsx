@@ -15,6 +15,7 @@ function MobileMenu({
   closeByEscAndOverlay,
   isHiddenHeaderButton,
   closeMenu,
+  onExit,
 }) {
   React.useEffect(() => {
     closeByEscAndOverlay();
@@ -31,6 +32,7 @@ function MobileMenu({
         handleButtonMenu={handleButtonMenu}
         isHiddenHeaderButton={isHiddenHeaderButton}
         closeMenu={closeMenu}
+        onExit={onExit}
       />
       <div className={`menu__container ${pathname !== '/' ? 'menu__container_white' : ''}`}>
         <Navigation
@@ -39,6 +41,7 @@ function MobileMenu({
           openLoginPopup={openLoginPopup}
           isMenu
           closeMenu={closeMenu}
+          onExit={onExit}
         />
       </div>
     </div>
@@ -56,6 +59,7 @@ MobileMenu.propTypes = {
   closeByEscAndOverlay: PropTypes.func.isRequired,
   isHiddenHeaderButton: PropTypes.bool.isRequired,
   closeMenu: PropTypes.func.isRequired,
+  onExit: PropTypes.func.isRequired,
 };
 
 export default MobileMenu;
