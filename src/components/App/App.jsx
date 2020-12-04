@@ -20,7 +20,6 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 function App() {
   const location = useLocation();
-  // eslint-disable-next-line no-unused-vars
   const [isUserLoggedIn, setUserLoggedIn] = React.useState(false);
   // eslint-disable-next-line no-unused-vars
   const [currentUser, setCurrentUser] = React.useState({});
@@ -29,7 +28,6 @@ function App() {
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = React.useState(false);
   const [isUserRegisteredPopupOpen, setIsUserRegisteredPopupOpen] = React.useState(false);
   const [registerErrorMessage, setRegisterErrorMessage] = React.useState('');
-  // eslint-disable-next-line no-unused-vars
   const [loginErrorMessage, setLoginErrorMessage] = React.useState('');
   /** мобильное меню  */
   const [isMenuMobileOpen, setIsMenuMobileOpen] = React.useState(false);
@@ -161,19 +159,50 @@ function App() {
   /* работа с пользователем * */
   function handleRegistration(userName, userEmail, userPassword) {
     mainApi.register(userName, userEmail, userPassword)
-      .then((res) => {
-        if (res.statusCode !== 400) {
-          setRegisterErrorMessage('');
-          setIsRegisterPopupOpen(false);
-          setIsUserRegisteredPopupOpen(true);
-        }
+      .then(() => {
+        setRegisterErrorMessage('');
+        setIsRegisterPopupOpen(false);
+        setIsUserRegisteredPopupOpen(true);
       })
       .catch((err) => {
         err.then((res) => {
-          setRegisterErrorMessage(res.message);
+          if (res.statusCode === 400) {
+            setRegisterErrorMessage(res.validation.body.message);
+          } else {
+            setRegisterErrorMessage(res.message);
+          }
         });
       });
   }
+  function handleLogin(userEmail, userPassword) {
+    mainApi.login(userEmail, userPassword)
+      .then(() => {
+        setUserLoggedIn(true);
+        setLoginErrorMessage('');
+        setIsLoginPopupOpen(false);
+      })
+      .catch((err) => {
+        err.then((res) => {
+          setLoginErrorMessage(res.message);
+        });
+      });
+  }
+  /** React.useEffect(() => {
+    Promise.all([mainApi.getContent(), mainApi.getSavedArticles()])
+      .then(([userInfo, articlesInfo]) => {
+        if (userInfo) {
+          setUserLoggedIn(true);
+          setCurrentUser({
+            name: userInfo.name,
+            savedArticles: articlesInfo.data,
+          });
+          console.log(userInfo);
+        }
+      })
+      .catch(() => {
+        setUserLoggedIn(false);
+      });
+  }, [isUserLoggedIn]); */
   return (
     <div className="app">
       <CurrentUserContext.Provider value={currentUser}>
@@ -218,6 +247,7 @@ function App() {
           onClose={closeAllPopups}
           openRegisterPopup={handleRegisterPopupOpen}
           loginErrorMessage={loginErrorMessage}
+          onSubmit={handleLogin}
         />
         <RegisterPopup
           isOpen={isRegisterPopupOpen}

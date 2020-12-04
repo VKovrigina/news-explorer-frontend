@@ -8,7 +8,7 @@ class MainApi {
 
   // eslint-disable-next-line class-methods-use-this
   _handleResponse(res) {
-    if (res.status === 200) {
+    if (res.ok) {
       return res.json();
     }
     return Promise.reject(res.json());
@@ -33,6 +33,7 @@ class MainApi {
       {
         method: 'POST',
         headers: this._headers,
+        credentials: 'include',
         body: JSON.stringify({
           email: userEmail,
           password: userPassword,
