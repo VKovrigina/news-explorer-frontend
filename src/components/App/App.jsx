@@ -187,22 +187,23 @@ function App() {
         });
       });
   }
-  /** React.useEffect(() => {
+  React.useEffect(() => {
     Promise.all([mainApi.getContent(), mainApi.getSavedArticles()])
       .then(([userInfo, articlesInfo]) => {
         if (userInfo) {
           setUserLoggedIn(true);
           setCurrentUser({
+            _id: userInfo._id,
             name: userInfo.name,
+            email: userInfo.email,
             savedArticles: articlesInfo.data,
           });
-          console.log(userInfo);
         }
       })
       .catch(() => {
         setUserLoggedIn(false);
       });
-  }, [isUserLoggedIn]); */
+  }, [isUserLoggedIn]);
   return (
     <div className="app">
       <CurrentUserContext.Provider value={currentUser}>
