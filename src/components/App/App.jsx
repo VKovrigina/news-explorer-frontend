@@ -59,6 +59,7 @@ function App() {
   /** попапы  */
   function handleLoginPopupOpen() {
     setIsLoginPopupOpen(true);
+    setLoginErrorMessage('');
   }
   function handleRegisterPopupOpen() {
     setIsRegisterPopupOpen(true);
@@ -249,6 +250,7 @@ function App() {
             component={SavedNews}
             isUserLoggedIn={isUserLoggedIn}
             articles={savedArticles}
+            openLoginPopup={handleLoginPopupOpen}
           />
           <Route>
             <Redirect to="/" />
