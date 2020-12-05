@@ -218,6 +218,50 @@ function App() {
         setUserLoggedIn(false);
       });
   }, [isUserLoggedIn]);
+  /** работа со статьями */
+  // eslint-disable-next-line no-unused-vars
+  function handleSaveArticle(
+    title,
+    text,
+    date,
+    source,
+    link,
+    image,
+  ) {
+    mainApi.createArticle(
+      title,
+      text,
+      date,
+      source,
+      link,
+      image,
+    )
+      .then((res) => {
+        const newArticle = res.data;
+        // eslint-disable-next-line max-len
+        const newArticles = currentArticles.map((item) => (item.link === link ? newArticle : item));
+        setCurrentArticles(newArticles);
+        localStorage.setItem('currentArticles', JSON.stringify(newArticles));
+      })
+      .catch((err) => {
+        err.then((res) => {
+          // eslint-disable-next-line no-console
+          console.log(res.message);
+        });
+      });
+  }
+  function updateSavedArticles() {
+    mainApi.getSavedArticles()
+      .then((articlesInfo) => {
+        setSavedArticles(articlesInfo.data);
+      })
+      .catch((err) => {
+        err.then((res) => {
+          // eslint-disable-next-line no-console
+          console.log(res.message);
+        });
+      });
+  }
   return (
     <div className="app">
       <CurrentUserContext.Provider value={currentUser}>
@@ -243,6 +287,7 @@ function App() {
               isNewsCardListVisible={isNewsCardListVisible}
               isPreloaderVisible={isPreloaderVisible}
               handleShowMoreButton={handleShowMoreButton}
+              saveArticle={handleSaveArticle}
             />
           </Route>
           <ProtectedRoute
@@ -251,6 +296,7 @@ function App() {
             isUserLoggedIn={isUserLoggedIn}
             articles={savedArticles}
             openLoginPopup={handleLoginPopupOpen}
+            updateSavedArticles={updateSavedArticles}
           />
           <Route>
             <Redirect to="/" />

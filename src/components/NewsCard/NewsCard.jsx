@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import './NewsCard.css';
 import PropTypes from 'prop-types';
@@ -7,6 +8,7 @@ import img from '../../images/image_04.jpg';
 function NewsCard({
   isMainPage,
   isLoggedIn,
+  saveArticle,
   keyword,
   title,
   text,
@@ -14,10 +16,28 @@ function NewsCard({
   source,
   link,
   image,
+  // eslint-disable-next-line react/prop-types
+  _id = undefined,
 }) {
+  const isSave = _id !== undefined;
+  function handleSaveArticle() {
+    saveArticle(
+      title,
+      text,
+      date,
+      source,
+      link,
+      image,
+    );
+  }
   return (
     <article className="news-card">
-      <NewsCardButton isMainPage={isMainPage} isLoggedIn={isLoggedIn} />
+      <NewsCardButton
+        isMainPage={isMainPage}
+        isLoggedIn={isLoggedIn}
+        isSave={isSave}
+        saveArticle={handleSaveArticle}
+      />
       {!isMainPage && <div className="news-card__keyword">{keyword}</div>}
       <a className="news-card__link" target="_blank" rel="noreferrer" href={link}>
         <img className="news-card__img" src={image} alt="Картинка к статье" onError={(e) => { e.target.src = img; }} />
@@ -43,6 +63,7 @@ NewsCard.propTypes = {
   image: PropTypes.string,
   isMainPage: PropTypes.bool.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
+  saveArticle: PropTypes.func,
 };
 
 export default NewsCard;

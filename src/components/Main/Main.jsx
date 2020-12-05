@@ -13,6 +13,7 @@ function Main({
   isNewsCardListVisible,
   isPreloaderVisible,
   handleShowMoreButton,
+  saveArticle,
 }) {
   return (
     <>
@@ -27,6 +28,7 @@ function Main({
         isLoggedIn={isLoggedIn}
         isPreloaderVisible={isPreloaderVisible}
         handleShowMoreButton={handleShowMoreButton}
+        saveArticle={saveArticle}
       />
       )
 }
@@ -45,6 +47,7 @@ Main.propTypes = {
   isNewsCardListVisible: PropTypes.bool.isRequired,
   isPreloaderVisible: PropTypes.bool.isRequired,
   handleShowMoreButton: PropTypes.func.isRequired,
+  saveArticle: PropTypes.func.isRequired,
 };
 
 export default Main;

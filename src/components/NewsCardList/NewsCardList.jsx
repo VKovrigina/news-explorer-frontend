@@ -7,7 +7,13 @@ import NewsCard from '../NewsCard/NewsCard';
 import Preloader from '../Preloader/Preloader';
 
 function NewsCardList({
-  isMainPage, articles, isLoggedIn, isPreloaderVisible, handleShowMoreButton, additionalArticles,
+  isMainPage,
+  articles,
+  isLoggedIn,
+  isPreloaderVisible,
+  handleShowMoreButton,
+  additionalArticles,
+  saveArticle,
 }) {
   return (
     <section className="news-card-list">
@@ -24,6 +30,7 @@ function NewsCardList({
             <NewsCard
               isLoggedIn={isLoggedIn}
               isMainPage={isMainPage}
+              saveArticle={saveArticle}
               key={[article.link, article.title, article.text]}
               {...article}
             />
@@ -53,6 +60,7 @@ NewsCardList.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   isPreloaderVisible: PropTypes.bool,
   handleShowMoreButton: PropTypes.func,
+  saveArticle: PropTypes.func,
 };
 
 export default NewsCardList;
