@@ -7,7 +7,7 @@ import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 function SavedNews({ articles, isLoggedIn }) {
   return (
     <>
-      <SavedNewsHeader />
+      <SavedNewsHeader articles={articles} />
       <NewsCardList isMainPage={false} articles={articles} isLoggedIn={isLoggedIn} />
     </>
   );

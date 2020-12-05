@@ -7,7 +7,6 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
-import { dataSave } from '../../utils/data';
 import LoginPopup from '../LoginPopup/LoginPopup';
 import RegisterPopup from '../RegisterPopup/RegisterPopup';
 import UserRegisteredMessagePopup from '../UserRegisteredMessagePopup/UserRegisteredMessagePopup';
@@ -21,7 +20,6 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 function App() {
   const location = useLocation();
   const [isUserLoggedIn, setUserLoggedIn] = React.useState(false);
-  // eslint-disable-next-line no-unused-vars
   const [currentUser, setCurrentUser] = React.useState({});
   /** попапы  */
   const [isLoginPopupOpen, setIsLoginPopupOpen] = React.useState(false);
@@ -35,8 +33,7 @@ function App() {
   /** статьи  */
   const [currentArticles, setCurrentArticles] = React.useState(JSON.parse(localStorage.getItem('currentArticles')) || []);
   const [additionalArticles, setAdditionalArticles] = React.useState(JSON.parse(localStorage.getItem('additionalArticles')) || []);
-  // eslint-disable-next-line no-unused-vars
-  const [savedArticles, setSavedArticles] = React.useState(dataSave || []);
+  const [savedArticles, setSavedArticles] = React.useState([]);
   const [isNewsCardListVisible, setIsNewsCardListVisible] = React.useState(JSON.parse(localStorage.getItem('isNewsCardListVisible')) || false);
   const [isPreloaderVisible, setIsPreloaderVisible] = React.useState(false);
   /** мобильное меню  */
@@ -212,8 +209,8 @@ function App() {
             _id: userInfo._id,
             name: userInfo.name,
             email: userInfo.email,
-            savedArticles: articlesInfo.data,
           });
+          setSavedArticles(articlesInfo.data);
         }
       })
       .catch(() => {
