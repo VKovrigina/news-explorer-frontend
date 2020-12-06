@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
-import PopupWithForm from '../PopupWithForm/PopupWithForm';
+import PopupContainer from '../PopupContainer/PopupContainer';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 function RegisterPopup({
@@ -22,7 +22,7 @@ function RegisterPopup({
     onSubmit(values.registerName, values.registerEmail, values.registerPassword);
   }
   return (
-    <PopupWithForm
+    <PopupContainer
       title="Регистрация"
       onClose={onClose}
       isOpen={isOpen}
@@ -81,7 +81,7 @@ function RegisterPopup({
         required
       />
       <span className="popup__span-error">{errors.registerName}</span>
-    </PopupWithForm>
+    </PopupContainer>
   );
 }
 

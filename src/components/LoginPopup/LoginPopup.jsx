@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import PropTypes from 'prop-types';
-import PopupWithForm from '../PopupWithForm/PopupWithForm';
+import PopupContainer from '../PopupContainer/PopupContainer';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 function LoginPopup({
@@ -22,7 +22,7 @@ function LoginPopup({
     onSubmit(values.loginEmail, values.loginPassword);
   }
   return (
-    <PopupWithForm
+    <PopupContainer
       title="Вход"
       onClose={onClose}
       isOpen={isOpen}
@@ -65,7 +65,7 @@ function LoginPopup({
         required
       />
       <span className="popup__span-error">{errors.loginPassword}</span>
-    </PopupWithForm>
+    </PopupContainer>
   );
 }
 

@@ -287,10 +287,14 @@ function App() {
         }
       })
       .catch((err) => {
-        err.then((res) => {
-          // eslint-disable-next-line no-console
-          console.log(res.message);
-        });
+        try {
+          err.then((res) => {
+            // eslint-disable-next-line no-console
+            console.log(res.message);
+          });
+        } catch {
+          console.log(err);
+        }
       });
   }
   return (

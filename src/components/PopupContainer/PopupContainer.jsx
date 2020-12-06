@@ -1,9 +1,9 @@
 /* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
-import './PopupWithForm.css';
+import './PopupContainer.css';
 
-function PopupWithForm({
+function PopupContainer({
   title,
   children,
   onClose,
@@ -55,7 +55,7 @@ function PopupWithForm({
   );
 }
 
-PopupWithForm.propTypes = {
+PopupContainer.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.node,
   onClose: PropTypes.func.isRequired,
@@ -70,4 +70,4 @@ PopupWithForm.propTypes = {
   onSubmit: PropTypes.func,
 };
 
-export default PopupWithForm;
+export default PopupContainer;
