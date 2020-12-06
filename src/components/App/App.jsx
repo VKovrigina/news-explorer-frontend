@@ -39,6 +39,7 @@ function App() {
   const [savedArticles, setSavedArticles] = React.useState([]);
   const [isNewsCardListVisible, setIsNewsCardListVisible] = React.useState(JSON.parse(localStorage.getItem('isNewsCardListVisible')) || false);
   const [isPreloaderVisible, setIsPreloaderVisible] = React.useState(false);
+  const [isNewsServerError, setNewsServerError] = React.useState(false);
   /** мобильное меню  */
   function handleCloseMenu() {
     setIsMenuMobileOpen(false);
@@ -138,9 +139,8 @@ function App() {
           localStorage.removeItem('additionalArticles');
         }
       })
-      .catch((err) => {
-        // eslint-disable-next-line no-console
-        console.error(`При запросе статей произошла ошибка: ${err}`);
+      .catch(() => {
+        setNewsServerError(true);
         localStorage.removeItem('additionalArticles');
         localStorage.removeItem('currentArticles');
         localStorage.removeItem('keyword');
@@ -352,6 +352,7 @@ function App() {
               handleShowMoreButton={handleShowMoreButton}
               saveArticle={handleSaveArticle}
               deleteArticle={handleDeleteArticle}
+              isNewsApiError={isNewsServerError}
             />
           </Route>
           <ProtectedRoute

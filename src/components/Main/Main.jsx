@@ -15,6 +15,7 @@ function Main({
   handleShowMoreButton,
   saveArticle,
   deleteArticle,
+  isNewsApiError,
 }) {
   return (
     <>
@@ -31,6 +32,7 @@ function Main({
         handleShowMoreButton={handleShowMoreButton}
         saveArticle={saveArticle}
         deleteArticle={deleteArticle}
+        isNewsApiError={isNewsApiError}
       />
       )
 }
@@ -51,6 +53,7 @@ Main.propTypes = {
   handleShowMoreButton: PropTypes.func.isRequired,
   saveArticle: PropTypes.func.isRequired,
   deleteArticle: PropTypes.func.isRequired,
+  isNewsApiError: PropTypes.bool.isRequired,
 };
 
 export default Main;

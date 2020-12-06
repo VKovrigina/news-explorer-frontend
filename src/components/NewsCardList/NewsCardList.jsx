@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import NotFound from '../NotFound/NotFound';
 import NewsCard from '../NewsCard/NewsCard';
 import Preloader from '../Preloader/Preloader';
+import NewsServerError from '../NewsServerError/NewsServerError';
 
 function NewsCardList({
   isMainPage,
@@ -15,6 +16,7 @@ function NewsCardList({
   additionalArticles,
   saveArticle,
   deleteArticle,
+  isNewsApiError,
 }) {
   return (
     <section className="news-card-list">
@@ -47,7 +49,8 @@ function NewsCardList({
           )}
         {isPreloaderVisible && <Preloader /> }
         {articles.length === 0 && !isPreloaderVisible
-        && <NotFound isMainPage={isMainPage} />}
+        && !isNewsApiError && <NotFound isMainPage={isMainPage} />}
+        {isNewsApiError && <NewsServerError />}
       </div>
     </section>
   );
@@ -64,6 +67,7 @@ NewsCardList.propTypes = {
   handleShowMoreButton: PropTypes.func,
   saveArticle: PropTypes.func,
   deleteArticle: PropTypes.func.isRequired,
+  isNewsApiError: PropTypes.bool,
 };
 
 export default NewsCardList;
