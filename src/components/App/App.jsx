@@ -219,7 +219,6 @@ function App() {
       });
   }, [isUserLoggedIn]);
   /** работа со статьями */
-  // eslint-disable-next-line no-unused-vars
   function handleSaveArticle(
     title,
     text,
@@ -262,6 +261,38 @@ function App() {
         });
       });
   }
+  function handleDeleteArticle(id) {
+    mainApi.deleteArticleById(id)
+      .then(() => {
+        const newSavedArticles = savedArticles.filter((item) => item._id !== id);
+        setSavedArticles(newSavedArticles);
+        const currArticlesId = currentArticles.map((item) => item._id);
+        /** проверяем по id, есть ли на главной странице удаляемая карточка */
+        if (currArticlesId.includes(id)) {
+          /** если есть - заменяем ее на другую, без id */
+          const deletedArticle = currentArticles.find((item) => item._id === id);
+          const newArticle = {
+            keyword: deletedArticle.keyword,
+            title: deletedArticle.title,
+            text: deletedArticle.text,
+            date: deletedArticle.date,
+            source: deletedArticle.source,
+            link: deletedArticle.link,
+            image: deletedArticle.image,
+          };
+          // eslint-disable-next-line max-len
+          const newCurrArticles = currentArticles.map((item) => (item._id === id ? newArticle : item));
+          setCurrentArticles(newCurrArticles);
+          localStorage.setItem('currentArticles', JSON.stringify(newCurrArticles));
+        }
+      })
+      .catch((err) => {
+        err.then((res) => {
+          // eslint-disable-next-line no-console
+          console.log(res.message);
+        });
+      });
+  }
   return (
     <div className="app">
       <CurrentUserContext.Provider value={currentUser}>
@@ -288,6 +319,7 @@ function App() {
               isPreloaderVisible={isPreloaderVisible}
               handleShowMoreButton={handleShowMoreButton}
               saveArticle={handleSaveArticle}
+              deleteArticle={handleDeleteArticle}
             />
           </Route>
           <ProtectedRoute
@@ -297,6 +329,7 @@ function App() {
             articles={savedArticles}
             openLoginPopup={handleLoginPopupOpen}
             updateSavedArticles={updateSavedArticles}
+            deleteArticle={handleDeleteArticle}
           />
           <Route>
             <Redirect to="/" />

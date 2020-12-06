@@ -14,6 +14,7 @@ function NewsCardList({
   handleShowMoreButton,
   additionalArticles,
   saveArticle,
+  deleteArticle,
 }) {
   return (
     <section className="news-card-list">
@@ -31,6 +32,7 @@ function NewsCardList({
               isLoggedIn={isLoggedIn}
               isMainPage={isMainPage}
               saveArticle={saveArticle}
+              deleteArticle={deleteArticle}
               key={[article.link, article.title, article.text]}
               {...article}
             />
@@ -61,6 +63,7 @@ NewsCardList.propTypes = {
   isPreloaderVisible: PropTypes.bool,
   handleShowMoreButton: PropTypes.func,
   saveArticle: PropTypes.func,
+  deleteArticle: PropTypes.func.isRequired,
 };
 
 export default NewsCardList;

@@ -9,6 +9,7 @@ function NewsCard({
   isMainPage,
   isLoggedIn,
   saveArticle,
+  deleteArticle,
   keyword,
   title,
   text,
@@ -30,6 +31,9 @@ function NewsCard({
       image,
     );
   }
+  function handleDeleteArticle() {
+    deleteArticle(_id);
+  }
   return (
     <article className="news-card">
       <NewsCardButton
@@ -37,6 +41,7 @@ function NewsCard({
         isLoggedIn={isLoggedIn}
         isSave={isSave}
         saveArticle={handleSaveArticle}
+        deleteArticle={handleDeleteArticle}
       />
       {!isMainPage && <div className="news-card__keyword">{keyword}</div>}
       <a className="news-card__link" target="_blank" rel="noreferrer" href={link}>
@@ -64,6 +69,7 @@ NewsCard.propTypes = {
   isMainPage: PropTypes.bool.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   saveArticle: PropTypes.func,
+  deleteArticle: PropTypes.func.isRequired,
 };
 
 export default NewsCard;

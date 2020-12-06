@@ -14,6 +14,7 @@ function Main({
   isPreloaderVisible,
   handleShowMoreButton,
   saveArticle,
+  deleteArticle,
 }) {
   return (
     <>
@@ -29,6 +30,7 @@ function Main({
         isPreloaderVisible={isPreloaderVisible}
         handleShowMoreButton={handleShowMoreButton}
         saveArticle={saveArticle}
+        deleteArticle={deleteArticle}
       />
       )
 }
@@ -48,6 +50,7 @@ Main.propTypes = {
   isPreloaderVisible: PropTypes.bool.isRequired,
   handleShowMoreButton: PropTypes.func.isRequired,
   saveArticle: PropTypes.func.isRequired,
+  deleteArticle: PropTypes.func.isRequired,
 };
 
 export default Main;

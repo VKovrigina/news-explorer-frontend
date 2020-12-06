@@ -7,7 +7,7 @@ import SaveCardActive from '../../images/Book-mark-active.svg';
 import DeleteCard from '../../images/DeleteIcon.svg';
 
 function NewsCardButton({
-  isMainPage, isLoggedIn, isSave, saveArticle,
+  isMainPage, isLoggedIn, isSave, saveArticle, deleteArticle,
 }) {
   function buttonIcon() {
     let icon;
@@ -49,7 +49,6 @@ function NewsCardButton({
       saveArticle();
     }
     if (isLoggedIn && isSave) {
-      // eslint-disable-next-line no-undef
       deleteArticle();
     }
   }
@@ -76,6 +75,7 @@ NewsCardButton.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   isSave: PropTypes.bool.isRequired,
   saveArticle: PropTypes.func,
+  deleteArticle: PropTypes.func.isRequired,
 };
 
 export default NewsCardButton;
