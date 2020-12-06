@@ -4,6 +4,7 @@ import './NewsCard.css';
 import PropTypes from 'prop-types';
 import NewsCardButton from '../NewsCardButton/NewsCardButton';
 import img from '../../images/image_04.jpg';
+import { defaultImgUrl } from '../../utils/constants';
 
 function NewsCard({
   isMainPage,
@@ -22,14 +23,25 @@ function NewsCard({
 }) {
   const isSave = _id !== undefined;
   function handleSaveArticle() {
-    saveArticle(
-      title,
-      text,
-      date,
-      source,
-      link,
-      image,
-    );
+    if (image !== null) {
+      saveArticle(
+        title,
+        text,
+        date,
+        source,
+        link,
+        image,
+      );
+    } else {
+      saveArticle(
+        title,
+        text,
+        date,
+        source,
+        link,
+        defaultImgUrl,
+      );
+    }
   }
   function handleDeleteArticle() {
     deleteArticle(_id);

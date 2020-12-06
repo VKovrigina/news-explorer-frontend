@@ -24,10 +24,12 @@ const monthNames = ['января', 'февраля', 'марта', 'апрел�
 ];
 
 const serverErrorMessage = 'Упс! Кажется, что-то поломалось :(';
+const defaultImgUrl = 'https://images.unsplash.com/photo-1607178289618-21847c3f7cc0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80';
 
 export {
   newsApiOptions,
   monthNames,
   mainApiOptions,
   serverErrorMessage,
+  defaultImgUrl,
 };

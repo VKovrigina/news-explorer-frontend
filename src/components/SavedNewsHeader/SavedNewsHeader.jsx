@@ -7,7 +7,7 @@ function SavedNewsHeader({ articles }) {
   const currentUser = React.useContext(CurrentUserContext);
   const [sortedKeywordsArray, setSortedKeywordsArray] = React.useState([]);
   const savedArticlesLength = articles.length;
-  const lastDigitArticlesLength = Number(savedArticlesLength.toString().split('').pop());
+  const lastDigitArticlesLength = Number(sortedKeywordsArray.length.toString().split('').pop());
   const keywordsArray = articles.map((item) => item.keyword);
   function endingDescription() {
     let ending;
@@ -26,11 +26,14 @@ function SavedNewsHeader({ articles }) {
   }
   function endingKeywords() {
     let ending;
-    if (savedArticlesLength === 1
-      || (savedArticlesLength !== 11 && lastDigitArticlesLength === 1)) {
+    if (sortedKeywordsArray.length === 1
+      || (sortedKeywordsArray.length > 1
+        && sortedKeywordsArray.length !== 11
+        && lastDigitArticlesLength === 1)
+    ) {
       ending = 'По ключевому слову';
     }
-    if (savedArticlesLength > 1) {
+    if (sortedKeywordsArray.length > 1) {
       ending = 'По ключевым словам';
     }
     return ending;
