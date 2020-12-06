@@ -28,9 +28,10 @@ function RegisterPopup({
       isOpen={isOpen}
       closeByEscAndOverlay={closeByEscAndOverlay}
       isMessagePopup={false}
+      isErrorPopup={false}
       buttonText="Зарегистрироваться"
       linkText="Войти"
-      openOtherPopup={openOtherPopup}
+      handleLinkClick={openOtherPopup}
       isButtonValid={isValid}
       errorMessage={registerErrorMessage}
       onSubmit={handleSubmit}

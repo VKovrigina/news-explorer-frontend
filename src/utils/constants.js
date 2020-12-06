@@ -23,4 +23,11 @@ const monthNames = ['января', 'февраля', 'марта', 'апрел�
   'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря',
 ];
 
-export { newsApiOptions, monthNames, mainApiOptions };
+const serverErrorMessage = 'Упс! Кажется, что-то поломалось :(';
+
+export {
+  newsApiOptions,
+  monthNames,
+  mainApiOptions,
+  serverErrorMessage,
+};

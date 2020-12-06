@@ -16,9 +16,10 @@ function UserRegisteredMessagePopup({
       isOpen={isOpen}
       closeByEscAndOverlay={closeByEscAndOverlay}
       isMessagePopup
+      isErrorPopup={false}
       buttonText=""
       linkText="Войти"
-      openOtherPopup={openOtherPopup}
+      handleLinkClick={openOtherPopup}
     />
   );
 }

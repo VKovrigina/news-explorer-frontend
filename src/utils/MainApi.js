@@ -77,6 +77,7 @@ class MainApi {
         credentials: 'include',
         body: JSON.stringify({
           keyword: JSON.parse(localStorage.getItem('keyword')),
+          // eslint-disable-next-line no-undef
           title: articleTitle,
           text: articleText,
           date: articleDate,

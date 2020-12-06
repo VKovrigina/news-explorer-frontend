@@ -28,9 +28,10 @@ function LoginPopup({
       isOpen={isOpen}
       closeByEscAndOverlay={closeByEscAndOverlay}
       isMessagePopup={false}
+      isErrorPopup={false}
       buttonText="Войти"
       linkText="Зарегистрироваться"
-      openOtherPopup={openOtherPopup}
+      handleLinkClick={openOtherPopup}
       errorMessage={loginErrorMessage}
       isButtonValid={isValid}
       onSubmit={handleSubmit}

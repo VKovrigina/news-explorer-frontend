@@ -85,6 +85,10 @@
   margin: 0 0 22px;
 }
 
+.popup__form-title_error {
+  color: rgb(156, 40, 40);
+}
+
 .popup__form-label {
   font-family: 'Roboto-regular', 'Arial', 'Helvetica', sans-serif;
   font-size: 12px;

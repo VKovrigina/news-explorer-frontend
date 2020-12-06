@@ -11,8 +11,9 @@ function PopupContainer({
   closeByEscAndOverlay,
   buttonText,
   linkText,
-  openOtherPopup,
+  handleLinkClick,
   isMessagePopup,
+  isErrorPopup,
   isButtonValid,
   errorMessage,
   onSubmit,
@@ -21,7 +22,7 @@ function PopupContainer({
     closeByEscAndOverlay();
   });
   function handleClick() {
-    openOtherPopup();
+    handleLinkClick();
   }
 
   return (
@@ -35,7 +36,7 @@ function PopupContainer({
           aria-hidden="true"
         />
         <form className="popup__form" method="get" action="#" onSubmit={onSubmit} noValidate>
-          <h2 className="popup__form-title">{title}</h2>
+          <h2 className={`popup__form-title ${isErrorPopup ? 'popup__form-title_error' : ''}`}>{title}</h2>
           {!isMessagePopup
             ? (
               <>
@@ -64,10 +65,11 @@ PopupContainer.propTypes = {
   isMessagePopup: PropTypes.bool.isRequired,
   buttonText: PropTypes.string.isRequired,
   linkText: PropTypes.string.isRequired,
-  openOtherPopup: PropTypes.func.isRequired,
+  handleLinkClick: PropTypes.func.isRequired,
   isButtonValid: PropTypes.bool,
   errorMessage: PropTypes.string,
   onSubmit: PropTypes.func,
+  isErrorPopup: PropTypes.bool.isRequired,
 };
 
 export default PopupContainer;

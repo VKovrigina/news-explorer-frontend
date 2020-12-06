@@ -10,11 +10,12 @@ import SavedNews from '../SavedNews/SavedNews';
 import LoginPopup from '../LoginPopup/LoginPopup';
 import RegisterPopup from '../RegisterPopup/RegisterPopup';
 import UserRegisteredMessagePopup from '../UserRegisteredMessagePopup/UserRegisteredMessagePopup';
+import ErrorPopup from '../ErrorPopup/ErrorPopup';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import newsApi from '../../utils/NewsApi';
 import mainApi from '../../utils/MainApi';
-import { monthNames } from '../../utils/constants';
+import { monthNames, serverErrorMessage } from '../../utils/constants';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
   const [isLoginPopupOpen, setIsLoginPopupOpen] = React.useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = React.useState(false);
   const [isUserRegisteredPopupOpen, setIsUserRegisteredPopupOpen] = React.useState(false);
+  const [isErrorPopupOpen, setErrorPopupOpen] = React.useState(false);
+  const [popupErrorText, setPopupErrorText] = React.useState('');
   const [registerErrorMessage, setRegisterErrorMessage] = React.useState('');
   const [loginErrorMessage, setLoginErrorMessage] = React.useState('');
   /** мобильное меню  */
@@ -69,6 +72,7 @@ function App() {
     setIsLoginPopupOpen(false);
     setIsUserRegisteredPopupOpen(false);
     setIsRegisterPopupOpen(false);
+    setErrorPopupOpen(false);
   }
   function closePopupByEscAndOverlay() {
     function handleEscClose(e) {
@@ -195,10 +199,15 @@ function App() {
         localStorage.removeItem('isNewsCardListVisible');
       })
       .catch((err) => {
-        err.then((res) => {
-          // eslint-disable-next-line no-console
-          console.log(res.message);
-        });
+        try {
+          err.then((res) => {
+            setPopupErrorText(res.message || serverErrorMessage);
+            setErrorPopupOpen(true);
+          });
+        } catch {
+          setPopupErrorText(serverErrorMessage);
+          setErrorPopupOpen(true);
+        }
       });
   }
   React.useEffect(() => {
@@ -243,10 +252,19 @@ function App() {
         localStorage.setItem('currentArticles', JSON.stringify(newArticles));
       })
       .catch((err) => {
-        err.then((res) => {
-          // eslint-disable-next-line no-console
-          console.log(res.message);
-        });
+        try {
+          err.then((res) => {
+            if (res.statusCode === 400) {
+              setPopupErrorText(res.validation.body.message || serverErrorMessage);
+            } else {
+              setPopupErrorText(res.message || serverErrorMessage);
+            }
+            setErrorPopupOpen(true);
+          });
+        } catch {
+          setPopupErrorText(serverErrorMessage);
+          setErrorPopupOpen(true);
+        }
       });
   }
   function updateSavedArticles() {
@@ -255,10 +273,15 @@ function App() {
         setSavedArticles(articlesInfo.data);
       })
       .catch((err) => {
-        err.then((res) => {
-          // eslint-disable-next-line no-console
-          console.log(res.message);
-        });
+        try {
+          err.then((res) => {
+            setPopupErrorText(res.message || serverErrorMessage);
+            setErrorPopupOpen(true);
+          });
+        } catch {
+          setPopupErrorText(serverErrorMessage);
+          setErrorPopupOpen(true);
+        }
       });
   }
   function handleDeleteArticle(id) {
@@ -289,11 +312,16 @@ function App() {
       .catch((err) => {
         try {
           err.then((res) => {
-            // eslint-disable-next-line no-console
-            console.log(res.message);
+            if (res.statusCode === 400) {
+              setPopupErrorText(res.validation.params.message || serverErrorMessage);
+            } else {
+              setPopupErrorText(res.message || serverErrorMessage);
+            }
+            setErrorPopupOpen(true);
           });
         } catch {
-          console.log(err);
+          setPopupErrorText(serverErrorMessage);
+          setErrorPopupOpen(true);
         }
       });
   }
@@ -362,6 +390,12 @@ function App() {
           closeByEscAndOverlay={closePopupByEscAndOverlay}
           onClose={closeAllPopups}
           openLoginPopup={handleLoginPopupOpen}
+        />
+        <ErrorPopup
+          isOpen={isErrorPopupOpen}
+          closeByEscAndOverlay={closePopupByEscAndOverlay}
+          onClose={closeAllPopups}
+          errorText={popupErrorText}
         />
         <MobileMenu
           isOpen={isMenuMobileOpen}
