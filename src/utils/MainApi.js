@@ -1,4 +1,4 @@
-import { mainApiOptions } from './constants';
+import { MAIN_API_OPTIONS } from './constants';
 
 class MainApi {
   constructor(options) {
@@ -110,5 +110,5 @@ class MainApi {
   }
 }
 
-const mainApi = new MainApi(mainApiOptions);
+const mainApi = new MainApi(MAIN_API_OPTIONS);
 export default mainApi;

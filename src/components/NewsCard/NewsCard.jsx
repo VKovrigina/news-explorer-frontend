@@ -4,7 +4,7 @@ import './NewsCard.css';
 import PropTypes from 'prop-types';
 import NewsCardButton from '../NewsCardButton/NewsCardButton';
 import img from '../../images/image_04.jpg';
-import { defaultImgUrl } from '../../utils/constants';
+import { DEFAULT_IMG_URL } from '../../utils/constants';
 
 function NewsCard({
   isMainPage,
@@ -39,7 +39,7 @@ function NewsCard({
         date,
         source,
         link,
-        defaultImgUrl,
+        DEFAULT_IMG_URL,
       );
     }
   }

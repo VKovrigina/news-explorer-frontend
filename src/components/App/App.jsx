@@ -15,7 +15,7 @@ import MobileMenu from '../MobileMenu/MobileMenu';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import newsApi from '../../utils/NewsApi';
 import mainApi from '../../utils/MainApi';
-import { monthNames, serverErrorMessage } from '../../utils/constants';
+import { MONTH_NAMES, SERVER_ERROR_MESSAGE, COUNT_NEW_ARTICLES } from '../../utils/constants';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 function App() {
@@ -102,7 +102,7 @@ function App() {
   /** работа со статьями */
   function changeDateFormat(date) {
     const newDate = date.split('T')[0].split('-').reverse();
-    const newMonth = `${monthNames[Number(newDate[1]) - 1]},`;
+    const newMonth = `${MONTH_NAMES[Number(newDate[1]) - 1]},`;
     newDate.splice(1, 1, newMonth);
     return newDate.join(' ');
   }
@@ -125,7 +125,7 @@ function App() {
           link: item.url,
           image: item.urlToImage,
         }));
-        const firstArticles = articles.splice(0, 3);
+        const firstArticles = articles.splice(0, COUNT_NEW_ARTICLES);
         setCurrentArticles(firstArticles);
         setAdditionalArticles(articles);
         if (firstArticles.length > 0) {
@@ -150,7 +150,7 @@ function App() {
   }
   function handleShowMoreButton() {
     if (additionalArticles.length > 0) {
-      const moreArticles = additionalArticles.splice(0, 3);
+      const moreArticles = additionalArticles.splice(0, COUNT_NEW_ARTICLES);
       setCurrentArticles([...currentArticles, ...moreArticles]);
       localStorage.setItem('currentArticles', JSON.stringify([...currentArticles, ...moreArticles]));
       localStorage.setItem('additionalArticles', JSON.stringify(additionalArticles));
@@ -201,11 +201,11 @@ function App() {
       .catch((err) => {
         try {
           err.then((res) => {
-            setPopupErrorText(res.message || serverErrorMessage);
+            setPopupErrorText(res.message || SERVER_ERROR_MESSAGE);
             setErrorPopupOpen(true);
           });
         } catch {
-          setPopupErrorText(serverErrorMessage);
+          setPopupErrorText(SERVER_ERROR_MESSAGE);
           setErrorPopupOpen(true);
         }
       });
@@ -255,14 +255,14 @@ function App() {
         try {
           err.then((res) => {
             if (res.statusCode === 400) {
-              setPopupErrorText(res.validation.body.message || serverErrorMessage);
+              setPopupErrorText(res.validation.body.message || SERVER_ERROR_MESSAGE);
             } else {
-              setPopupErrorText(res.message || serverErrorMessage);
+              setPopupErrorText(res.message || SERVER_ERROR_MESSAGE);
             }
             setErrorPopupOpen(true);
           });
         } catch {
-          setPopupErrorText(serverErrorMessage);
+          setPopupErrorText(SERVER_ERROR_MESSAGE);
           setErrorPopupOpen(true);
         }
       });
@@ -275,11 +275,11 @@ function App() {
       .catch((err) => {
         try {
           err.then((res) => {
-            setPopupErrorText(res.message || serverErrorMessage);
+            setPopupErrorText(res.message || SERVER_ERROR_MESSAGE);
             setErrorPopupOpen(true);
           });
         } catch {
-          setPopupErrorText(serverErrorMessage);
+          setPopupErrorText(SERVER_ERROR_MESSAGE);
           setErrorPopupOpen(true);
         }
       });
@@ -313,14 +313,14 @@ function App() {
         try {
           err.then((res) => {
             if (res.statusCode === 400) {
-              setPopupErrorText(res.validation.params.message || serverErrorMessage);
+              setPopupErrorText(res.validation.params.message || SERVER_ERROR_MESSAGE);
             } else {
-              setPopupErrorText(res.message || serverErrorMessage);
+              setPopupErrorText(res.message || SERVER_ERROR_MESSAGE);
             }
             setErrorPopupOpen(true);
           });
         } catch {
-          setPopupErrorText(serverErrorMessage);
+          setPopupErrorText(SERVER_ERROR_MESSAGE);
           setErrorPopupOpen(true);
         }
       });

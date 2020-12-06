@@ -1,12 +1,12 @@
 import React from 'react';
 import './NewsServerError.css';
-import { newsServerErrorMessage } from '../../utils/constants';
+import { NEWS_SERVER_ERROR_MESSAGE } from '../../utils/constants';
 
 function NewsServerError() {
   return (
     <div className="error">
       <p className="error__description">
-        {newsServerErrorMessage}
+        {NEWS_SERVER_ERROR_MESSAGE}
       </p>
     </div>
   );

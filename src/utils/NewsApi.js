@@ -1,4 +1,4 @@
-import { newsApiOptions } from './constants';
+import { NEWS_API_OPTIONS } from './constants';
 
 class NewsApi {
   constructor(options) {
@@ -20,5 +20,5 @@ class NewsApi {
   }
 }
 
-const newsApi = new NewsApi(newsApiOptions);
+const newsApi = new NewsApi(NEWS_API_OPTIONS);
 export default newsApi;
