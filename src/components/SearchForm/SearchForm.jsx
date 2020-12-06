@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './SearchForm.css';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 
-function SearchForm({ onSubmit }) {
+function SearchForm({ onSubmit, isLoading }) {
   const {
     values, handleChange, errors, isValid, resetForm,
   } = useFormWithValidation();
@@ -14,6 +14,15 @@ function SearchForm({ onSubmit }) {
     e.preventDefault();
 
     onSubmit(values.article);
+  }
+  function isButtonDisabled() {
+    let isDisabled;
+    if (!isValid || isLoading) {
+      isDisabled = true;
+    } else {
+      isDisabled = false;
+    }
+    return isDisabled;
   }
   return (
     <section className="search-form">
@@ -35,7 +44,7 @@ function SearchForm({ onSubmit }) {
             value={values.article || ''}
             onChange={handleChange}
           />
-          <button className={`search-form__submit-button ${!isValid ? 'search-form__submit-button_inactive' : 'search-form__submit-button_active'}`} type="submit" disabled={!isValid}>Искать</button>
+          <button className={`search-form__submit-button ${isButtonDisabled() ? 'search-form__submit-button_inactive' : 'search-form__submit-button_active'}`} type="submit" disabled={isButtonDisabled()}>Искать</button>
         </form>
       </div>
     </section>
@@ -44,6 +53,7 @@ function SearchForm({ onSubmit }) {
 
 SearchForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 export default SearchForm;

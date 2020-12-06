@@ -37,9 +37,11 @@ function App() {
   const [currentArticles, setCurrentArticles] = React.useState(JSON.parse(localStorage.getItem('currentArticles')) || []);
   const [additionalArticles, setAdditionalArticles] = React.useState(JSON.parse(localStorage.getItem('additionalArticles')) || []);
   const [savedArticles, setSavedArticles] = React.useState([]);
+  /** другое */
   const [isNewsCardListVisible, setIsNewsCardListVisible] = React.useState(JSON.parse(localStorage.getItem('isNewsCardListVisible')) || false);
   const [isPreloaderVisible, setIsPreloaderVisible] = React.useState(false);
   const [isNewsServerError, setNewsServerError] = React.useState(false);
+  const [isFormLoading, setFormLoading] = React.useState(false);
   /** мобильное меню  */
   function handleCloseMenu() {
     setIsMenuMobileOpen(false);
@@ -114,6 +116,7 @@ function App() {
     setCurrentArticles([]);
     setAdditionalArticles([]);
     setIsPreloaderVisible(true);
+    setFormLoading(true);
     newsApi.getArticles(value)
       .then((res) => {
         const articles = res.articles.map((item) => ({
@@ -146,7 +149,10 @@ function App() {
         localStorage.removeItem('keyword');
         localStorage.removeItem('isNewsCardListVisible');
       })
-      .finally(() => setIsPreloaderVisible(false));
+      .finally(() => {
+        setIsPreloaderVisible(false);
+        setFormLoading(false);
+      });
   }
   function handleShowMoreButton() {
     if (additionalArticles.length > 0) {
@@ -353,6 +359,7 @@ function App() {
               saveArticle={handleSaveArticle}
               deleteArticle={handleDeleteArticle}
               isNewsApiError={isNewsServerError}
+              isFormLoading={isFormLoading}
             />
           </Route>
           <ProtectedRoute

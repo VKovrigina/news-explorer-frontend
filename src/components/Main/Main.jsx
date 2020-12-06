@@ -16,10 +16,11 @@ function Main({
   saveArticle,
   deleteArticle,
   isNewsApiError,
+  isFormLoading,
 }) {
   return (
     <>
-      <SearchForm onSubmit={handleSearchFormSubmit} />
+      <SearchForm onSubmit={handleSearchFormSubmit} isLoading={isFormLoading} />
       {
       isNewsCardListVisible
       && (
@@ -54,6 +55,7 @@ Main.propTypes = {
   saveArticle: PropTypes.func.isRequired,
   deleteArticle: PropTypes.func.isRequired,
   isNewsApiError: PropTypes.bool.isRequired,
+  isFormLoading: PropTypes.bool.isRequired,
 };
 
 export default Main;
