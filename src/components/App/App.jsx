@@ -166,6 +166,7 @@ function App() {
   }
   /* работа с пользователем * */
   function handleRegistration(userName, userEmail, userPassword) {
+    setFormLoading(true);
     mainApi.register(userName, userEmail, userPassword)
       .then(() => {
         setRegisterErrorMessage('');
@@ -173,16 +174,24 @@ function App() {
         setIsUserRegisteredPopupOpen(true);
       })
       .catch((err) => {
-        err.then((res) => {
-          if (res.statusCode === 400) {
-            setRegisterErrorMessage(res.validation.body.message);
-          } else {
-            setRegisterErrorMessage(res.message);
-          }
-        });
+        try {
+          err.then((res) => {
+            if (res.statusCode === 400) {
+              setRegisterErrorMessage(res.validation.body.message);
+            } else {
+              setRegisterErrorMessage(res.message);
+            }
+          });
+        } catch {
+          setRegisterErrorMessage(SERVER_ERROR_MESSAGE);
+        }
+      })
+      .finally(() => {
+        setFormLoading(false);
       });
   }
   function handleLogin(userEmail, userPassword) {
+    setFormLoading(true);
     mainApi.login(userEmail, userPassword)
       .then(() => {
         setUserLoggedIn(true);
@@ -190,9 +199,20 @@ function App() {
         setIsLoginPopupOpen(false);
       })
       .catch((err) => {
-        err.then((res) => {
-          setLoginErrorMessage(res.message);
-        });
+        try {
+          err.then((res) => {
+            if (res.statusCode === 400) {
+              setLoginErrorMessage(res.validation.body.message);
+            } else {
+              setLoginErrorMessage(res.message);
+            }
+          });
+        } catch {
+          setLoginErrorMessage(SERVER_ERROR_MESSAGE);
+        }
+      })
+      .finally(() => {
+        setFormLoading(false);
       });
   }
   function handleExit() {
@@ -384,6 +404,7 @@ function App() {
           openRegisterPopup={handleRegisterPopupOpen}
           loginErrorMessage={loginErrorMessage}
           onSubmit={handleLogin}
+          isLoading={isFormLoading}
         />
         <RegisterPopup
           isOpen={isRegisterPopupOpen}
@@ -392,6 +413,7 @@ function App() {
           openLoginPopup={handleLoginPopupOpen}
           registerErrorMessage={registerErrorMessage}
           onSubmit={handleRegistration}
+          isLoading={isFormLoading}
         />
         <UserRegisteredMessagePopup
           isOpen={isUserRegisteredPopupOpen}

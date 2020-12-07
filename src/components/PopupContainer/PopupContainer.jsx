@@ -17,12 +17,22 @@ function PopupContainer({
   isButtonValid,
   errorMessage,
   onSubmit,
+  isLoading,
 }) {
   React.useEffect(() => {
     closeByEscAndOverlay();
   });
   function handleClick() {
     handleLinkClick();
+  }
+  function isButtonDisabled() {
+    let isDisabled;
+    if (!isButtonValid || isLoading) {
+      isDisabled = true;
+    } else {
+      isDisabled = false;
+    }
+    return isDisabled;
   }
 
   return (
@@ -42,7 +52,7 @@ function PopupContainer({
               <>
                 {children}
                 <span className="popup__span-error popup__span-error_position_center">{errorMessage}</span>
-                <button className={`popup__form-button ${!isButtonValid ? 'popup__form-button_disable' : 'popup__form-button_active'}`} type="submit" disabled={!isButtonValid}>{buttonText}</button>
+                <button className={`popup__form-button ${isButtonDisabled() ? 'popup__form-button_disable' : 'popup__form-button_active'}`} type="submit" disabled={isButtonDisabled()}>{buttonText}</button>
                 <p className="popup__form-paragraph">
                   или&nbsp;
                   <button className="popup__form-link popup__form-link_type_s" type="button" onClick={handleClick}>{linkText}</button>
@@ -70,6 +80,7 @@ PopupContainer.propTypes = {
   errorMessage: PropTypes.string,
   onSubmit: PropTypes.func,
   isErrorPopup: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 export default PopupContainer;

@@ -5,7 +5,7 @@ import PopupContainer from '../PopupContainer/PopupContainer';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 function RegisterPopup({
-  onClose, isOpen, closeByEscAndOverlay, openLoginPopup, registerErrorMessage, onSubmit,
+  onClose, isOpen, closeByEscAndOverlay, openLoginPopup, registerErrorMessage, onSubmit, isLoading,
 }) {
   const {
     values, handleChange, errors, isValid, resetForm,
@@ -35,6 +35,7 @@ function RegisterPopup({
       isButtonValid={isValid}
       errorMessage={registerErrorMessage}
       onSubmit={handleSubmit}
+      isLoading={isLoading}
     >
       <label htmlFor="register-email" className="popup__form-label">
         Email
@@ -93,6 +94,7 @@ RegisterPopup.propTypes = {
   openLoginPopup: PropTypes.func.isRequired,
   registerErrorMessage: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
 export default RegisterPopup;
