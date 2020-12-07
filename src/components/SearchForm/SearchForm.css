@@ -123,8 +123,8 @@
 }
 
 .search-form__submit-button_inactive {
-  background: rgb(58, 95, 160);
-  color: rgb(187, 209, 248);
+  background: rgb(230,232,235);
+  color: rgb(182,188,191);
 }
 
 .search-form__submit-button_active {
