@@ -4,6 +4,8 @@ class NewsApi {
   constructor(options) {
     this._getSevenDaysAgoDate = options.getSevenDaysAgoDate;
     this._getCurrentDate = options.getCurrentDate;
+    this._key = options.key;
+    this._baseUrl = options.baseUrl;
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -15,7 +17,7 @@ class NewsApi {
   }
 
   getArticles(value) {
-    return fetch(`https://newsapi.org/v2/everything?q=${value}&from=${this._getSevenDaysAgoDate()}&to=${this._getCurrentDate()}&sortBy=popularity&pageSize=100&apiKey=e7f9ea0f4c6648ad9d59c29246d45eef`)
+    return fetch(`${this._baseUrl}/v2/everything?q=${value}&from=${this._getSevenDaysAgoDate()}&to=${this._getCurrentDate()}&sortBy=popularity&pageSize=100&apiKey=${this._key}`)
       .then(this._handleResponse);
   }
 }

@@ -10,6 +10,8 @@ const NEWS_API_OPTIONS = {
     const currentDate = currentFullDate.toISOString().split('T')[0];
     return currentDate;
   },
+  key: 'e7f9ea0f4c6648ad9d59c29246d45eef',
+  baseUrl: 'https://nomoreparties.co/news',
 };
 
 const MAIN_API_OPTIONS = {
