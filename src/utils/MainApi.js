@@ -32,8 +32,8 @@ class MainApi {
     return fetch(`${this._baseUrl}/signin`,
       {
         method: 'POST',
-        headers: this._headers,
         credentials: 'include',
+        headers: this._headers,
         body: JSON.stringify({
           email: userEmail,
           password: userPassword,
@@ -46,8 +46,8 @@ class MainApi {
     return fetch(`${this._baseUrl}/logout`,
       {
         method: 'GET',
-        headers: this._headers,
         credentials: 'include',
+        headers: this._headers,
       })
       .then(this._handleResponse);
   }
@@ -56,8 +56,8 @@ class MainApi {
     return fetch(`${this._baseUrl}/users/me`,
       {
         method: 'GET',
-        headers: this._headers,
         credentials: 'include',
+        headers: this._headers,
       })
       .then(this._handleResponse);
   }
@@ -73,8 +73,8 @@ class MainApi {
     return fetch(`${this._baseUrl}/articles`,
       {
         method: 'POST',
-        headers: this._headers,
         credentials: 'include',
+        headers: this._headers,
         body: JSON.stringify({
           keyword: JSON.parse(localStorage.getItem('keyword')),
           // eslint-disable-next-line no-undef
@@ -93,8 +93,8 @@ class MainApi {
     return fetch(`${this._baseUrl}/articles`,
       {
         method: 'GET',
-        headers: this._headers,
         credentials: 'include',
+        headers: this._headers,
       })
       .then(this._handleResponse);
   }
@@ -103,8 +103,8 @@ class MainApi {
     return fetch(`${this._baseUrl}/articles/${id}`,
       {
         method: 'DELETE',
-        headers: this._headers,
         credentials: 'include',
+        headers: this._headers,
       })
       .then(this._handleResponse);
   }

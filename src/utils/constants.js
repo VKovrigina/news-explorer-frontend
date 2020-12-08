@@ -15,7 +15,7 @@ const NEWS_API_OPTIONS = {
 };
 
 const MAIN_API_OPTIONS = {
-  baseUrl: 'http://localhost:3001',
+  baseUrl: 'https://api.new-s.students.nomoreparties.co',
   headers: {
     'Content-Type': 'application/json',
   },
