@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PopupWithForm from '../PopupWithForm/PopupWithForm';
+import PopupContainer from '../PopupContainer/PopupContainer';
 
 function UserRegisteredMessagePopup({
   onClose, isOpen, closeByEscAndOverlay, openLoginPopup,
@@ -10,15 +10,16 @@ function UserRegisteredMessagePopup({
     openLoginPopup();
   }
   return (
-    <PopupWithForm
+    <PopupContainer
       title="Пользователь успешно зарегистрирован!"
       onClose={onClose}
       isOpen={isOpen}
       closeByEscAndOverlay={closeByEscAndOverlay}
       isMessagePopup
+      isErrorPopup={false}
       buttonText=""
       linkText="Войти"
-      openOtherPopup={openOtherPopup}
+      handleLinkClick={openOtherPopup}
     />
   );
 }

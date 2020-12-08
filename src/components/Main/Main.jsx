@@ -5,11 +5,38 @@ import SearchForm from '../SearchForm/SearchForm';
 import NewsCardList from '../NewsCardList/NewsCardList';
 import About from '../About/About';
 
-function Main({ cards, isLoggedIn }) {
+function Main({
+  articles,
+  additionalArticles,
+  isLoggedIn,
+  handleSearchFormSubmit,
+  isNewsCardListVisible,
+  isPreloaderVisible,
+  handleShowMoreButton,
+  saveArticle,
+  deleteArticle,
+  isNewsApiError,
+  isFormLoading,
+}) {
   return (
     <>
-      <SearchForm />
-      <NewsCardList isMainPage cards={cards} isLoggedIn={isLoggedIn} />
+      <SearchForm onSubmit={handleSearchFormSubmit} isLoading={isFormLoading} />
+      {
+      isNewsCardListVisible
+      && (
+      <NewsCardList
+        isMainPage
+        articles={articles}
+        additionalArticles={additionalArticles}
+        isLoggedIn={isLoggedIn}
+        isPreloaderVisible={isPreloaderVisible}
+        handleShowMoreButton={handleShowMoreButton}
+        saveArticle={saveArticle}
+        deleteArticle={deleteArticle}
+        isNewsApiError={isNewsApiError}
+      />
+      )
+}
       <About />
     </>
   );
@@ -17,8 +44,18 @@ function Main({ cards, isLoggedIn }) {
 
 Main.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  cards: PropTypes.array.isRequired,
+  articles: PropTypes.array.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  additionalArticles: PropTypes.array.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
+  handleSearchFormSubmit: PropTypes.func.isRequired,
+  isNewsCardListVisible: PropTypes.bool.isRequired,
+  isPreloaderVisible: PropTypes.bool.isRequired,
+  handleShowMoreButton: PropTypes.func.isRequired,
+  saveArticle: PropTypes.func.isRequired,
+  deleteArticle: PropTypes.func.isRequired,
+  isNewsApiError: PropTypes.bool.isRequired,
+  isFormLoading: PropTypes.bool.isRequired,
 };
 
 export default Main;

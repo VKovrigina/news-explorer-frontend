@@ -3,13 +3,17 @@ import PropTypes from 'prop-types';
 import './NavButton.css';
 import ExitIconBlack from '../../images/Union-exit-black.svg';
 import ExitIconWhite from '../../images/Union-exit-white.svg';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 function NavButton({
-  isLoggedIn, pathname, openLoginPopup, isMenu,
+  isLoggedIn, pathname, openLoginPopup, isMenu, onExit,
 }) {
+  const currentUser = React.useContext(CurrentUserContext);
   function onClickFunction() {
     if (!isLoggedIn) {
       openLoginPopup();
+    } else {
+      onExit();
     }
   }
   return (
@@ -17,7 +21,7 @@ function NavButton({
       {isLoggedIn
         ? (
           <>
-            <span className={`nav-button__text ${pathname === '/' ? 'nav-button__text_type_white' : 'nav-button__text_type_black'}`}>Имя пользователя</span>
+            <span className={`nav-button__text ${pathname === '/' ? 'nav-button__text_type_white' : 'nav-button__text_type_black'}`}>{currentUser.name}</span>
             <img className="nav-button__icon" alt="" src={`${pathname === '/' ? ExitIconWhite : ExitIconBlack}`} />
           </>
         )
@@ -31,6 +35,7 @@ NavButton.propTypes = {
   pathname: PropTypes.string.isRequired,
   openLoginPopup: PropTypes.func.isRequired,
   isMenu: PropTypes.bool.isRequired,
+  onExit: PropTypes.func.isRequired,
 };
 
 export default NavButton;

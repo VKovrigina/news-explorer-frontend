@@ -1,30 +1,56 @@
+/* eslint-disable react/require-default-props */
 import React from 'react';
 import './NewsCardList.css';
 import PropTypes from 'prop-types';
 import NotFound from '../NotFound/NotFound';
 import NewsCard from '../NewsCard/NewsCard';
-// import Preloader from '../Preloader/Preloader';
+import Preloader from '../Preloader/Preloader';
+import NewsServerError from '../NewsServerError/NewsServerError';
 
-function NewsCardList({ isMainPage, cards, isLoggedIn }) {
+function NewsCardList({
+  isMainPage,
+  articles,
+  isLoggedIn,
+  isPreloaderVisible,
+  handleShowMoreButton,
+  additionalArticles,
+  saveArticle,
+  deleteArticle,
+  isNewsApiError,
+}) {
   return (
     <section className="news-card-list">
       <div className="news-card-list__container">
-        {isMainPage && <h2 className="news-card-list__title">Результаты поиска</h2>}
-        {cards.length > 0 && (
+        {isMainPage && articles.length > 0 && !isPreloaderVisible
+          && (
+          <h2 className="news-card-list__title">
+            Результаты поиска
+          </h2>
+          )}
+        {articles.length > 0 && (
         <div className="news-card-list__card-container">
-          {cards.map((card) => (
+          {articles.map((article) => (
             <NewsCard
               isLoggedIn={isLoggedIn}
               isMainPage={isMainPage}
-              key={card._id}
-              {...card}
+              saveArticle={saveArticle}
+              deleteArticle={deleteArticle}
+              key={[article.link, article.title, article.text]}
+              {...article}
             />
           ))}
         </div>
         )}
-        {isMainPage && <button className="news-card-list__button" type="button">Показать еще</button>}
-        {/* <Preloader /> */}
-        {cards.length === 0 && <NotFound isMainPage={isMainPage} />}
+        {isMainPage && !isPreloaderVisible && additionalArticles.length !== 0
+          && (
+          <button className="news-card-list__button" type="button" onClick={handleShowMoreButton}>
+            Показать еще
+          </button>
+          )}
+        {isPreloaderVisible && <Preloader /> }
+        {articles.length === 0 && !isPreloaderVisible
+        && !isNewsApiError && <NotFound isMainPage={isMainPage} />}
+        {isNewsApiError && <NewsServerError />}
       </div>
     </section>
   );
@@ -33,8 +59,15 @@ function NewsCardList({ isMainPage, cards, isLoggedIn }) {
 NewsCardList.propTypes = {
   isMainPage: PropTypes.bool.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  cards: PropTypes.array.isRequired,
+  articles: PropTypes.array.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  additionalArticles: PropTypes.array,
   isLoggedIn: PropTypes.bool.isRequired,
+  isPreloaderVisible: PropTypes.bool,
+  handleShowMoreButton: PropTypes.func,
+  saveArticle: PropTypes.func,
+  deleteArticle: PropTypes.func.isRequired,
+  isNewsApiError: PropTypes.bool,
 };
 
 export default NewsCardList;
