@@ -22,5 +22,12 @@
 ## :link: Ссылки
 Проект задеплоен тут :arrow_right: https://new-s.students.nomoreparties.co
 
+## Запуск
+npm i - установить зависимости
+
+npm run build - сборка приложения
+
+npm run start - запуск приложения
+
 ## Благодарность 
 [Яндеск.Практикум](https://praktikum.yandex.ru/profile/web/)
