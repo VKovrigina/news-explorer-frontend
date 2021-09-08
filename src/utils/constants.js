@@ -15,7 +15,7 @@ const NEWS_API_OPTIONS = {
 };
 
 const MAIN_API_OPTIONS = {
-  baseUrl: 'https://api.new-s.students.nomoreparties.co',
+  baseUrl: 'http://178.154.247.210',
   headers: {
     'Content-Type': 'application/json',
   },
