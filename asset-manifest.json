@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.97946ec7.css",
-    "main.js": "/static/js/main.d6e1051d.js",
-    "static/media/author-photo.jpg": "/static/media/author-photo.36397e9fe57cb0885539.jpg",
-    "static/media/sourcesanspro-regular.woff": "/static/media/sourcesanspro-regular.95f3ed417b8520ba43c9.woff",
-    "static/media/robotoslab-bold.woff": "/static/media/robotoslab-bold.7a6c84ca4f1d8b0ab3b1.woff",
-    "static/media/roboto-black.woff": "/static/media/roboto-black.31affea0add82d57c782.woff",
-    "static/media/roboto-bold.woff": "/static/media/roboto-bold.8631a431c4e4976be994.woff",
-    "static/media/paper.jpg": "/static/media/paper.3f919ad614d526b16d78.jpg",
-    "static/media/image_04.jpg": "/static/media/image_04.f6ade60d083ac9ebcae1.jpg",
-    "static/media/robotoslab-regular.woff": "/static/media/robotoslab-regular.d3d7cd6d622b03852d2f.woff",
-    "static/media/roboto-medium.woff": "/static/media/roboto-medium.5673e7a07239f4785325.woff",
-    "static/media/roboto-regular.woff": "/static/media/roboto-regular.59d18e163bfcd0607572.woff",
-    "index.html": "/index.html",
-    "main.97946ec7.css.map": "/static/css/main.97946ec7.css.map",
-    "main.d6e1051d.js.map": "/static/js/main.d6e1051d.js.map"
+    "main.css": "/news-explorer-frontend/static/css/main.de8d452a.css",
+    "main.js": "/news-explorer-frontend/static/js/main.08e206f6.js",
+    "static/media/author-photo.jpg": "/news-explorer-frontend/static/media/author-photo.36397e9fe57cb0885539.jpg",
+    "static/media/sourcesanspro-regular.woff": "/news-explorer-frontend/static/media/sourcesanspro-regular.95f3ed417b8520ba43c9.woff",
+    "static/media/robotoslab-bold.woff": "/news-explorer-frontend/static/media/robotoslab-bold.7a6c84ca4f1d8b0ab3b1.woff",
+    "static/media/roboto-black.woff": "/news-explorer-frontend/static/media/roboto-black.31affea0add82d57c782.woff",
+    "static/media/roboto-bold.woff": "/news-explorer-frontend/static/media/roboto-bold.8631a431c4e4976be994.woff",
+    "static/media/paper.jpg": "/news-explorer-frontend/static/media/paper.3f919ad614d526b16d78.jpg",
+    "static/media/image_04.jpg": "/news-explorer-frontend/static/media/image_04.f6ade60d083ac9ebcae1.jpg",
+    "static/media/robotoslab-regular.woff": "/news-explorer-frontend/static/media/robotoslab-regular.d3d7cd6d622b03852d2f.woff",
+    "static/media/roboto-medium.woff": "/news-explorer-frontend/static/media/roboto-medium.5673e7a07239f4785325.woff",
+    "static/media/roboto-regular.woff": "/news-explorer-frontend/static/media/roboto-regular.59d18e163bfcd0607572.woff",
+    "index.html": "/news-explorer-frontend/index.html",
+    "main.de8d452a.css.map": "/news-explorer-frontend/static/css/main.de8d452a.css.map",
+    "main.08e206f6.js.map": "/news-explorer-frontend/static/js/main.08e206f6.js.map"
   },
   "entrypoints": [
-    "static/css/main.97946ec7.css",
-    "static/js/main.d6e1051d.js"
+    "static/css/main.de8d452a.css",
+    "static/js/main.08e206f6.js"
   ]
 }
