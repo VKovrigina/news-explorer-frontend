@@ -8,7 +8,6 @@
 * JavaScript
 * React.js
   * Hooks
-  * Context
 * БЭМ методологоия
 * ESlint
 
