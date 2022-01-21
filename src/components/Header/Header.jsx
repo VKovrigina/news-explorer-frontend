@@ -7,6 +7,7 @@ function Header() {
     <header className="header header_bg_img header_position_fixed">
       <div className="header__container">
         <HeaderLogoWhite />
+        <p>Tect</p>
       </div>
     </header>
 
