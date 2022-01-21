@@ -8,13 +8,10 @@ import About from '../About/About';
 function Main({
   articles,
   additionalArticles,
-  isLoggedIn,
   handleSearchFormSubmit,
   isNewsCardListVisible,
   isPreloaderVisible,
   handleShowMoreButton,
-  saveArticle,
-  deleteArticle,
   isNewsApiError,
   isFormLoading,
 }) {
@@ -28,11 +25,8 @@ function Main({
         isMainPage
         articles={articles}
         additionalArticles={additionalArticles}
-        isLoggedIn={isLoggedIn}
         isPreloaderVisible={isPreloaderVisible}
         handleShowMoreButton={handleShowMoreButton}
-        saveArticle={saveArticle}
-        deleteArticle={deleteArticle}
         isNewsApiError={isNewsApiError}
       />
       )
@@ -47,13 +41,10 @@ Main.propTypes = {
   articles: PropTypes.array.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   additionalArticles: PropTypes.array.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired,
   handleSearchFormSubmit: PropTypes.func.isRequired,
   isNewsCardListVisible: PropTypes.bool.isRequired,
   isPreloaderVisible: PropTypes.bool.isRequired,
   handleShowMoreButton: PropTypes.func.isRequired,
-  saveArticle: PropTypes.func.isRequired,
-  deleteArticle: PropTypes.func.isRequired,
   isNewsApiError: PropTypes.bool.isRequired,
   isFormLoading: PropTypes.bool.isRequired,
 };

@@ -15,39 +15,8 @@ function NewsCard({
   link,
   image,
 }) {
-  /** const isSave = _id !== undefined;
-  function handleSaveArticle() {
-    if (image !== null) {
-      saveArticle(
-        title,
-        text,
-        date,
-        source,
-        link,
-        image,
-      );
-    } else {
-      saveArticle(
-        title,
-        text,
-        date,
-        source,
-        link,
-        DEFAULT_IMG_URL,
-      );
-    }
-  }function handleDeleteArticle() {
-    deleteArticle(_id);
-  } */
   return (
     <article className="news-card">
-      {/* <NewsCardButton
-        isMainPage={isMainPage}
-        isLoggedIn={isLoggedIn}
-        isSave={isSave}
-        saveArticle={handleSaveArticle}
-        deleteArticle={handleDeleteArticle}
-      /> */}
       {!isMainPage && <div className="news-card__keyword">{keyword}</div>}
       <a className="news-card__link" target="_blank" rel="noreferrer" href={link}>
         <img className="news-card__img" src={image} alt="Картинка к статье" onError={(e) => { e.target.src = img; }} />

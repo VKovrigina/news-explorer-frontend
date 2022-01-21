@@ -6,7 +6,7 @@ import './NotFound.css';
 function NotFound({ isMainPage }) {
   return (
     <div className="not-found">
-      <img alt="Ничего не найдено" src={NotFoundIcon} />
+      <NotFoundIcon alt="Ничего не найдено" />
       <p className="not-found__title">Ничего не найдено</p>
       <p className="not-found__description">
         {`${isMainPage ? 'К сожалению по вашему запросу ничего не найдено.' : 'У вас пока что нет сохраненных статей...'}`}

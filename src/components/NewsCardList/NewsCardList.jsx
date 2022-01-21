@@ -10,12 +10,9 @@ import NewsServerError from '../NewsServerError/NewsServerError';
 function NewsCardList({
   isMainPage,
   articles,
-  isLoggedIn,
   isPreloaderVisible,
   handleShowMoreButton,
   additionalArticles,
-  saveArticle,
-  deleteArticle,
   isNewsApiError,
 }) {
   return (
@@ -31,10 +28,7 @@ function NewsCardList({
         <div className="news-card-list__card-container">
           {articles.map((article) => (
             <NewsCard
-              isLoggedIn={isLoggedIn}
               isMainPage={isMainPage}
-              saveArticle={saveArticle}
-              deleteArticle={deleteArticle}
               key={[article.link, article.title, article.text]}
               {...article}
             />
@@ -62,11 +56,8 @@ NewsCardList.propTypes = {
   articles: PropTypes.array.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   additionalArticles: PropTypes.array,
-  isLoggedIn: PropTypes.bool.isRequired,
   isPreloaderVisible: PropTypes.bool,
   handleShowMoreButton: PropTypes.func,
-  saveArticle: PropTypes.func,
-  deleteArticle: PropTypes.func.isRequired,
   isNewsApiError: PropTypes.bool,
 };
 
