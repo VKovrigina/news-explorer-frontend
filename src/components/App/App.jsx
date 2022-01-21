@@ -1,7 +1,4 @@
 import React from 'react';
-import {
-  Route, Switch, useLocation,
-} from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -10,7 +7,6 @@ import newsApi from '../../utils/NewsApi';
 import { MONTH_NAMES, COUNT_NEW_ARTICLES } from '../../utils/constants';
 
 function App() {
-  const location = useLocation();
   /** статьи  */
   const [currentArticles, setCurrentArticles] = React.useState(JSON.parse(localStorage.getItem('currentArticles')) || []);
   const [additionalArticles, setAdditionalArticles] = React.useState(JSON.parse(localStorage.getItem('additionalArticles')) || []);
@@ -85,25 +81,17 @@ function App() {
 
   return (
     <div className="app">
-      <Header
-        pathname={location.pathname}
-        isMenu={false}
+      <Header />
+      <Main
+        articles={currentArticles}
+        additionalArticles={additionalArticles}
+        handleSearchFormSubmit={handleSearchFormSubmit}
+        isNewsCardListVisible={isNewsCardListVisible}
+        isPreloaderVisible={isPreloaderVisible}
+        handleShowMoreButton={handleShowMoreButton}
+        isNewsApiError={isNewsServerError}
+        isFormLoading={isFormLoading}
       />
-      <Switch>
-        <Route exact path="/">
-          <Main
-            articles={currentArticles}
-            additionalArticles={additionalArticles}
-            handleSearchFormSubmit={handleSearchFormSubmit}
-            isNewsCardListVisible={isNewsCardListVisible}
-            isPreloaderVisible={isPreloaderVisible}
-            handleShowMoreButton={handleShowMoreButton}
-            isNewsApiError={isNewsServerError}
-            isFormLoading={isFormLoading}
-          />
-        </Route>
-
-      </Switch>
       <Footer />
     </div>
   );
