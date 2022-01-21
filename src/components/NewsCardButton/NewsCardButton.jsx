@@ -2,9 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './NewsCardButton.css';
-import SaveCardInactive from '../../images/Book-mark-inactive.svg';
-import SaveCardActive from '../../images/Book-mark-active.svg';
-import DeleteCard from '../../images/DeleteIcon.svg';
+import SaveCardInactive from '../../images/Book-mark-inactive';
+import SaveCardActive from '../../images/Book-mark-active';
+import DeleteCard from '../../images/DeleteIcon';
 
 function NewsCardButton({
   isMainPage, isLoggedIn, isSave, saveArticle, deleteArticle,

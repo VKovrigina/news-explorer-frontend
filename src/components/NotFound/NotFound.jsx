@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import NotFoundIcon from '../../images/not-found.svg';
+import NotFoundIcon from '../../images/not-found';
 import './NotFound.css';
 
 function NotFound({ isMainPage }) {

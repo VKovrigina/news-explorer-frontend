@@ -11,16 +11,12 @@
   * Context
 * БЭМ методологоия
 * ESlint
-* Работа с REST API
 
 ## :muscle: Возможности
-* Регистрация, авторизация в приложении
 * Поиск новостей по заданной теме
-* Сохранение понравившихся статей
-* Личный кабинет с сохраненными статьями
 
 ## :link: Ссылки
-Проект задеплоен тут :arrow_right: https://new-s.students.nomoreparties.co
+Проект задеплоен тут :arrow_right: https://vkovrigina.github.io/news-explorer-frontend/
 
 ## Запуск
 npm i - установить зависимости

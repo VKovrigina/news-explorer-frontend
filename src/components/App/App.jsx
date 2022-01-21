@@ -7,9 +7,9 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import SavedNews from '../SavedNews/SavedNews';
-import LoginPopup from '../LoginPopup/LoginPopup';
-import RegisterPopup from '../RegisterPopup/RegisterPopup';
-import UserRegisteredMessagePopup from '../UserRegisteredMessagePopup/UserRegisteredMessagePopup';
+//import LoginPopup from '../LoginPopup/LoginPopup';
+//import RegisterPopup from '../RegisterPopup/RegisterPopup';
+//import UserRegisteredMessagePopup from '../UserRegisteredMessagePopup/UserRegisteredMessagePopup';
 import ErrorPopup from '../ErrorPopup/ErrorPopup';
 import MobileMenu from '../MobileMenu/MobileMenu';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -236,7 +236,7 @@ function App() {
         }
       });
   }
-  React.useEffect(() => {
+  /**React.useEffect(() => {
     Promise.all([mainApi.getContent(), mainApi.getSavedArticles()])
       .then(([userInfo, articlesInfo]) => {
         if (userInfo) {
@@ -252,7 +252,7 @@ function App() {
       .catch(() => {
         setUserLoggedIn(false);
       });
-  }, [isUserLoggedIn]);
+  }, [isUserLoggedIn]);*/
   /** работа со статьями */
   function handleSaveArticle(
     title,
@@ -397,7 +397,7 @@ function App() {
 
         </Switch>
         <Footer />
-        <LoginPopup
+        {/* <LoginPopup
           isOpen={isLoginPopupOpen}
           closeByEscAndOverlay={closePopupByEscAndOverlay}
           onClose={closeAllPopups}
@@ -414,13 +414,13 @@ function App() {
           registerErrorMessage={registerErrorMessage}
           onSubmit={handleRegistration}
           isLoading={isFormLoading}
-        />
-        <UserRegisteredMessagePopup
+        /> */}
+        {/* <UserRegisteredMessagePopup
           isOpen={isUserRegisteredPopupOpen}
           closeByEscAndOverlay={closePopupByEscAndOverlay}
           onClose={closeAllPopups}
           openLoginPopup={handleLoginPopupOpen}
-        />
+        /> */}
         <ErrorPopup
           isOpen={isErrorPopupOpen}
           closeByEscAndOverlay={closePopupByEscAndOverlay}

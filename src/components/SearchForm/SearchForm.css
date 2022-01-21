@@ -3,7 +3,7 @@
   box-sizing: border-box;
   position: relative;
   display: flex;
-  background: url(../../images/photo-form.jpg) no-repeat center/cover fixed;
+  background: url(../../images/paper.jpg) no-repeat center/cover fixed;
 }
 
 .search-form::before {

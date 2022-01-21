@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './NavButton.css';
-import ExitIconBlack from '../../images/Union-exit-black.svg';
-import ExitIconWhite from '../../images/Union-exit-white.svg';
+import ExitIconBlack from '../../images/Union-exit-black';
+import ExitIconWhite from '../../images/Union-exit-white';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 function NavButton({
